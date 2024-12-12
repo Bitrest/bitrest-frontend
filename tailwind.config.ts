@@ -11,6 +11,18 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        baseGreen: {
+          one: "#5BC6A3",
+        },
+      },
+      fontFamily: {
+        carbonic: ["var(--font-carbonic)"],
+        outfit: ["var(--font-outfit)"],
+        roboto: ["var(--font-roboto)"],
+      },
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(183.2deg, #063D37 -151.72%, #063D37 -31.98%, #082C1F 35.28%, #032723 84.69%)",
       },
     },
   },

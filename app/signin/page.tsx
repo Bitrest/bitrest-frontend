@@ -1,18 +1,23 @@
 import Image from "next/image";
 import hero from "@/public/real estate 1.svg";
 import blur1 from "@/public/top left blur.svg";
+import Link from "next/link";
 import logo from "@/public/images/plain logo.svg";
 
 export default function Page() {
   return (
     <div className="w-full  text-white relative items-center justify-items-center min-h-screen pb-20 gap-16 font-carbonic">
       <Image className="absolute top-0 left-0 -z-10" src={blur1} alt="hero" />
+
       <Image className="absolute bottom-0 left-0 -z-10" src={hero} alt="hero" />
 
       {/* Hero Section */}
       <div className="h-[50%] px-8 items-center py-10 grid grid-cols-1 space-y-8 sm:space-y-0 sm:grid-cols-3">
         <div className="col-span-1">
-          <Image src={logo} alt="logo" />
+          <Link href={"/"}>
+            <Image src={logo} alt="logo" />
+          </Link>
+
           <p className="text-[50px]">Welcome Back</p>
           <p className="font-roboto text-[20px]">
             Log in to explore new real estate opportunities and manage your

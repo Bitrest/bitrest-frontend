@@ -2,6 +2,7 @@ import Image from "next/image";
 import hero from "@/public/real estate 1.svg";
 import blur1 from "@/public/top left blur.svg";
 import logo from "@/public/images/plain logo.svg";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -12,8 +13,9 @@ export default function Page() {
       {/* Hero Section */}
       <div className="h-[50%] px-8 items-center py-10 grid grid-cols-1 space-y-8 sm:space-y-0 sm:grid-cols-3">
         <div className="col-span-1">
-          <Image src={logo} alt="logo" />
-
+          <Link href={"/"}>
+            <Image src={logo} alt="logo" />
+          </Link>
           <p className="text-[50px]">
             Explore Real Estate investment with Ease
           </p>

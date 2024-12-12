@@ -2,6 +2,7 @@
 import Image from "next/image";
 import logo from "@/public/images/Bitrest logo.svg";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -37,10 +38,13 @@ export default function Header() {
         </div>
 
         <div className="font-outfit hidden sm:flex items-center space-x-4">
-          <p>Login</p>
-          <p className="border border-[#5BC6A3] bg-[#02291B] px-4 py-2">
+          <Link href={"/signin"}>Login</Link>
+          <Link
+            href={"/signup"}
+            className="border border-[#5BC6A3] bg-[#02291B] px-4 py-2"
+          >
             Sign Up
-          </p>
+          </Link>
         </div>
       </div>
       {showMenu && (
@@ -48,10 +52,13 @@ export default function Header() {
           <p>About</p>
           <p>Product</p>
           <p>Contact Us</p>
-          <p>Login</p>
-          <p className="border w-fit border-[#5BC6A3] bg-[#02291B] px-4 py-2">
+          <Link href={"/signin"}>Login</Link>
+          <Link
+            href={"/signup"}
+            className="border w-fit border-[#5BC6A3] bg-[#02291B] px-4 py-2"
+          >
             Sign Up
-          </p>
+          </Link>
         </div>
       )}
     </div>

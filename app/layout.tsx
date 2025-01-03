@@ -117,7 +117,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${carbonic.variable} ${outfit.variable} ${roboto.variable} bg-custom-gradient font-carbonic antialiased`}
+        className={`${carbonic.variable} ${outfit.variable} w-screen  ${roboto.variable} bg-custom-gradient font-carbonic antialiased`}
       >
         {children}
       </body>

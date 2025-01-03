@@ -14,7 +14,7 @@ export default function Page() {
         alt="hero"
       />
 
-      <div className="h-full px-[40px] w-full items-start py-[80px] grid grid-cols-1 gap-[50px] space-y-8 sm:space-y-0 sm:grid-cols-2">
+      <div className="h-full px-[40px] w-full items-start py-[80px] grid grid-cols-1 gap-[50px] space-y-8 lg:space-y-0 lg:grid-cols-2">
         <div className="col-span-1">
           <Link href={"/"}>
             <Image src={logo} alt="logo" />
@@ -22,7 +22,9 @@ export default function Page() {
           <p className="text-[40px] xl:text-[50px] mt-[32px] mb-[16px]">
             Explore Real Estate <br /> investment with Ease
           </p>
-          <p className="font-manrope xl:text-[24px] text-[16px] text-white/60">
+          <p
+            className={`font-manrope xl:text-[24px] text-[16px] text-white/60`}
+          >
             Create your account and explore global real estate investments with
             Bitcoin
           </p>
@@ -109,7 +111,7 @@ export default function Page() {
                 </p>
               </div>
             </div>
-            <button className="bg-[#5BC6A3] w-full px-4 mt-8 border border-[#D4FAFE] text-[#111111] py-2">
+            <button className="bg-[#D4FAFE] w-full px-4 mt-8 border  text-[#063D37] py-2">
               Create Account
             </button>
           </div>

@@ -15,7 +15,7 @@ import arrow from "@/public/icons/arrow.svg";
 
 export default function Home() {
   return (
-    <div className="w-full  text-white relative items-center justify-items-center min-h-screen pb-20 gap-16 font-carbonic">
+    <div className="w-screen overflow-x-hidden  text-white relative items-center justify-items-center min-h-screen pb-20 gap-16 font-carbonic">
       <Header />
       <Image className="absolute top-0 left-0 z-10" src={blur1} alt="topblur" />
 
@@ -110,8 +110,8 @@ export default function Home() {
       </div>
 
       {/* Products Sections */}
+
       <div className="w-full flex relative border-dashed px-[40px] sm:px-[120px] py-[100px] border-b border-b-[#D4FAFE] items-center flex-col">
-        {/* Top blur */}
         <div
           className="absolute z-10 top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]"
           style={{
@@ -122,7 +122,6 @@ export default function Home() {
           }}
         />
 
-        {/* Bottom left blur */}
         <div
           className="absolute z-10 -bottom-8 left-0 w-[600px] h-[400px]"
           style={{
@@ -133,13 +132,13 @@ export default function Home() {
           }}
         />
 
-        <p className="text-center text-[45px] mb-[24px]">Products</p>
-        <p className="text-center flex justify-center items-center text-[18px] mb-[32px]  w-full sm:w-[80%]">
+        <p className="text-center z-20 text-[45px] mb-[24px]">Products</p>
+        <p className="text-center z-20 flex justify-center items-center text-[18px] mb-[32px]  w-full sm:w-[80%]">
           At Bitrest, we offer a range of products and services designed to help
           you seamlessly integrate bitcoin into your real estate investments.
         </p>
 
-        <div className="grid grid-cols-1 w-full sm:grid-cols-2 mt-[20px] gap-[60px]">
+        <div className="grid z-40  grid-cols-1 w-full sm:grid-cols-2 mt-[20px] gap-[60px]">
           <div className="min-h-[408px] px-8 py-8 flex flex-col justify-center bg-inherit w-full border border-[#5BC6A3]">
             <div className="justify-start items-start space-y-[16px] mb-[16px]">
               <Image src={estate} alt="estate" />
@@ -198,9 +197,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* Contact Section */}
-      <div className="w-full px-[40px] sm:px-[120px] py-14">
+      <div className="w-full z-40 px-[40px] sm:px-[120px] py-14">
         <div className="w-full border grid grid-cols-1 sm:grid-cols-2 items-end gap-8  border-[#5BC6A3] px-8 py-8">
           <div>
             <p className="text-[45px]">Ready to get started?</p>

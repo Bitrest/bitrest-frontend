@@ -19,6 +19,7 @@ export default {
         carbonic: ["var(--font-carbonic)"],
         outfit: ["var(--font-outfit)"],
         roboto: ["var(--font-roboto)"],
+        manrope: ["var(--font-manrope)"],
       },
       backgroundImage: {
         "custom-gradient":

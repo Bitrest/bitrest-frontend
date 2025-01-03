@@ -19,7 +19,7 @@ export default function Page() {
           </Link>
 
           <p className="text-[50px]">Welcome Back</p>
-          <p className="font-roboto text-[20px]">
+          <p className="font-manrope text-[20px]">
             Log in to explore new real estate opportunities and manage your
             Bitcoin investments securely.
           </p>
@@ -54,7 +54,7 @@ export default function Page() {
           <div className="w-full mt-5 space-y-4">
             <div className="flex w-full space-x-4 items-center">
               <input type="checkbox" defaultChecked />
-              <p className="text-[10px] sm:text-[16px] font-roboto">
+              <p className="text-[10px] sm:text-[16px] font-manrope">
                 Remember Me
               </p>
             </div>

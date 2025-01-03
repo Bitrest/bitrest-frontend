@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import localFont from "next/font/local";
-import { Outfit, Roboto } from "next/font/google";
+import { Manrope, Outfit, Roboto } from "next/font/google";
 import "./globals.css";
 
 const carbonic = localFont({
@@ -101,7 +101,14 @@ const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
   style: ["normal"],
   subsets: ["latin"],
-  variable: "--font-roboto",
+  variable: "--font-manrope",
+});
+
+const manrope = Manrope({
+  weight: ["400", "500", "600", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -117,7 +124,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${carbonic.variable} ${outfit.variable} ${roboto.variable} bg-custom-gradient font-carbonic antialiased min-h-screen overflow-x-hidden`}
+        className={`${carbonic.variable} ${manrope.className} ${outfit.variable} ${roboto.variable} bg-custom-gradient font-carbonic antialiased min-h-screen overflow-x-hidden`}
       >
         {children}
       </body>

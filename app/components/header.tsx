@@ -8,7 +8,7 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   return (
     <div className="w-full bg-[#10352F]">
-      <div className="w-full relative bg-transparent flex justify-between items-center px-[40px] sm:px-[120px] py-8">
+      <div className="w-full relative bg-transparent flex justify-between items-center px-[40px] lg:px-[120px] py-8">
         <Image className="z-40" src={logo} alt="logo" />
         <div className="font-outfit  hidden text-[20px] sm:flex items-center space-x-3">
           <p>About</p>

@@ -1,6 +1,6 @@
 import Header from "./components/header";
 import Image from "next/image";
-import hero from "@/public/real estate 1.svg";
+//import hero from "@/public/real estate 1.svg";
 import blur1 from "@/public/top left blur.svg";
 import globe from "@/public/images/Global Reach.svg";
 import inclusivity from "@/public/images/Inclusivity.svg";
@@ -12,6 +12,7 @@ import phone from "@/public/icons/phone.svg";
 import pin from "@/public/icons/pin.svg";
 import logo from "@/public/images/Bitrest logo.svg";
 import arrow from "@/public/icons/arrow.svg";
+import estateful from "@/public/images/real estate.svg";
 
 export default function Home() {
   return (
@@ -21,14 +22,14 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="relative bg-[#10352F] h-[50%] w-full py-10">
-        <div className="max-w-[1440px grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-          <div className="px-[40px]  sm:px-[120px] z-10">
+        <div className="max-w-[1440px grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+          <div className="px-[40px]  lg:px-[120px] z-10">
             <p className="text-[70px] mb-[36px]">
               Invest in Real Estate
               <br />
               with <span className="text-[#CAFBFF]">Bitcoin</span>
             </p>
-            <p className="font-roboto text-[20px] mb-[40px]">
+            <p className="font-manrope text-[20px] mb-[40px]">
               Unlock real estate opportunities across the globe. Use your
               bitcoin to securely invest in high-potential properties through a
               streamlined, transparent crowdfunding platform designed for modern
@@ -58,13 +59,13 @@ export default function Home() {
 
             {/* Hero image */}
             <div className="relative z-10">
-              <Image src={hero} alt="hero" className="relative" />
+              <Image src={estateful} alt="hero" className="relative" />
             </div>
           </div>
         </div>
       </div>
       {/* About Us Section */}
-      <div className="w-full px-[40px] bg-[#10352F] sm:px-[120px] flex py-[100px]  border-b border-b-[#D4FAFE] items-center flex-col">
+      <div className="w-full px-[40px] bg-[#10352F] lg:px-[120px] flex py-[100px]  border-b border-b-[#D4FAFE] items-center flex-col">
         <p className="text-center text-[45px]">About Us</p>
         <p className="text-center w-[90%] sm:w-[50%] flex justify-center items-center text-[16px]">
           At Bitrest, we believe that real estate should be accessible to
@@ -111,7 +112,7 @@ export default function Home() {
 
       {/* Products Sections */}
 
-      <div className="w-full flex relative border-dashed px-[40px] sm:px-[120px] py-[100px] border-b border-b-[#D4FAFE] items-center flex-col">
+      <div className="w-full flex relative border-dashed px-[40px] lg:px-[120px] py-[100px] border-b border-b-[#D4FAFE] items-center flex-col">
         <div
           className="absolute z-10 top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]"
           style={{
@@ -144,7 +145,7 @@ export default function Home() {
               <Image src={estate} alt="estate" />
               <p className="text-[26px]">Real Estate Crowdfunding</p>
             </div>
-            <p className="text-[18px] mb-[32px]  font-roboto">
+            <p className="text-[18px] mb-[32px]  font-manrope">
               Gain access to a wide range of real estate projects across
               different regions. Pool your bitcoin assets with others to
               collectively invest in high-potential properties and developments.
@@ -158,7 +159,7 @@ export default function Home() {
               <Image src={bitcoin} alt="bitcoin" />
               <p className="text-[26px]">Bitcoin-backed Investments</p>
             </div>
-            <p className="text-[18px] mb-[32px]  font-roboto">
+            <p className="text-[18px] mb-[32px]  font-manrope">
               Use your bitcoin holdings to invest directly in real estate
               without converting to fiat. This option allows for faster, more
               secure transactions, all managed through blockchain technology.
@@ -172,7 +173,7 @@ export default function Home() {
               <Image src={estate} alt="estate" />
               <p className="text-[26px]">Portfolio Diversification</p>
             </div>
-            <p className="text-[18px] mb-[32px]  font-roboto">
+            <p className="text-[18px] mb-[32px]  font-manrope">
               Gain access to a wide range of real estate projects across
               different regions. Pool your bitcoin assets with others to
               collectively invest in high-potential properties and developments.
@@ -186,7 +187,7 @@ export default function Home() {
               <Image src={bitcoin} alt="bitcoin" />
               <p className="text-[26px]">Transparent Reporting & Analytics</p>
             </div>
-            <p className="text-[18px] mb-[32px] font-roboto">
+            <p className="text-[18px] mb-[32px] font-manrope">
               Track your investments in real-time with comprehensive reporting
               tools. View your portfolio&apos;s performance, real estate project
               updates, and other critical data directly from your dashboard.
@@ -198,11 +199,11 @@ export default function Home() {
         </div>
       </div>
       {/* Contact Section */}
-      <div className="w-full z-40 px-[40px] sm:px-[120px] py-14">
+      <div className="w-full z-40 px-[40px] lg:px-[120px] py-14">
         <div className="w-full border grid grid-cols-1 sm:grid-cols-2 items-end gap-8  border-[#5BC6A3] px-8 py-8">
           <div>
             <p className="text-[45px]">Ready to get started?</p>
-            <p className="text-[18px] font-roboto">
+            <p className="text-[18px] font-manrope">
               Our team is here to help you take the next step in your real
               estate investment journey. Contact us today for personalized
               support, and let&apos;s discuss how we can help you achieve your
@@ -228,10 +229,10 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="grid w-full px-[40px] sm:px-[120px] gap-8 grid-cols-1 items-end sm:grid-cols-2">
+      <div className="grid w-full px-[40px] lg:px-[120px] gap-8 grid-cols-1 items-end sm:grid-cols-2">
         <div className="w-full flex flex-col space-y-6 justify-between h-full  items-start">
           <Image className="mb-[12px]" src={logo} alt="logo" />
-          <p className="text-[18px] font-roboto">
+          <p className="text-[18px] font-manrope">
             Subscribe to receive the latest updates, exclusive investment
             opportunities, and expert insights on bitcoin-powered real estate
             crowdfunding directly to your inbox.
@@ -252,30 +253,30 @@ export default function Home() {
         <div className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="w-full space-y-4">
             <p className="text-[26px] font-[500]">Product</p>
-            <p className="text-[18px] font-roboto">RE Crowdfunding</p>
-            <p className="text-[18px] font-roboto">Tokenized Assets</p>
-            <p className="text-[18px] font-roboto">Auto Portfolios</p>
-            <p className="text-[18px] font-roboto">Staking Funds</p>
+            <p className="text-[18px] font-manrope">RE Crowdfunding</p>
+            <p className="text-[18px] font-manrope">Tokenized Assets</p>
+            <p className="text-[18px] font-manrope">Auto Portfolios</p>
+            <p className="text-[18px] font-manrope">Staking Funds</p>
           </div>
           <div className="w-full space-y-4">
             <p className="text-[26px] font-[500]">Business</p>
-            <p className="text-[18px] font-roboto">CryptoMange</p>
-            <p className="text-[18px] font-roboto">BlockCunsult</p>
-            <p className="text-[18px] font-roboto">Global Exchange</p>
-            <p className="text-[18px] font-roboto">TokenTrade</p>
+            <p className="text-[18px] font-manrope">CryptoMange</p>
+            <p className="text-[18px] font-manrope">BlockCunsult</p>
+            <p className="text-[18px] font-manrope">Global Exchange</p>
+            <p className="text-[18px] font-manrope">TokenTrade</p>
           </div>
           <div className="w-full space-y-4">
             <p className="text-[26px] font-[500]">Socials</p>
-            <p className="text-[18px] font-roboto">Facebook</p>
-            <p className="text-[18px] font-roboto">Discord</p>
-            <p className="text-[18px] font-roboto">Youtube</p>
-            <p className="text-[18px] font-roboto">Telegram</p>
+            <p className="text-[18px] font-manrope">Facebook</p>
+            <p className="text-[18px] font-manrope">Discord</p>
+            <p className="text-[18px] font-manrope">Youtube</p>
+            <p className="text-[18px] font-manrope">Telegram</p>
           </div>
         </div>
       </div>
-      <div className="w-full px-[40px] sm:px-[120px]">
+      <div className="w-full px-[40px] lg:px-[120px]">
         <div className="w-full h-[0.5px] mt-[50px] text-[#26CE92] bg-[#26CE92]" />
-        <p className="mt-[20px] font-roboto text-[18px]">
+        <p className="mt-[20px] font-manrope text-[18px]">
           © 2024 Bitrest All rights reserved | info@bitrest.xyz
         </p>
       </div>

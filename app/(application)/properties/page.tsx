@@ -11,7 +11,7 @@ export default function Page() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
-    <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[72px]">
+    <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[36px]">
       <div className="flex justify-between  mb-[40px]">
         <div className="flex flex-col gap-4">
           <div className="w-fit h-[44px] flex items-center rounded-[8px] bg-white/[8%]">
@@ -87,10 +87,10 @@ export default function Page() {
           />
         </div>
       </div>
-      <div className="w-full h-fit lg:h-[398px] flex-col lg:flex-row bg-white/[9%] gap-[20px] border border-white-[3%] rounded-[16px] flex   lg:pr-[30px]">
-        <div className="relative group">
-          {/* Image container */}
-          <div className="relative w-full aspect-video">
+      <div className="w-full h-fit lg:h-[398px] flex-col lg:flex-row bg-white/[9%] gap-[20px] border border-white-[3%] rounded-[16px] flex lg:pr-[30px]">
+        {/* Image Section - Modified for large screens */}
+        <div className="relative group lg:w-1/2">
+          <div className="relative w-full h-full min-h-[300px]">
             <Image
               src={propertiesData[0].images[currentImageIndex]}
               alt={`${propertiesData[0].title} - Image ${
@@ -98,6 +98,8 @@ export default function Page() {
               }`}
               className="object-cover rounded-lg"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           </div>
 
@@ -167,9 +169,11 @@ export default function Page() {
             </button>
           </div>
         </div>
-        <div className="py-[40px] px-[30px]">
+
+        {/* Content Section */}
+        <div className="py-[40px] px-[30px] lg:w-1/2">
           {/* First Row */}
-          <div className="flex  justify-between items-center">
+          <div className="flex justify-between items-center">
             <p className="text-[20px] text-white font-[500]">Tedro Courts</p>
             <div className="flex items-center gap-2">
               <Image src={map} alt="map" />
@@ -181,7 +185,7 @@ export default function Page() {
           </div>
 
           {/* Second Row */}
-          <div className="flex  mt-[34px] mb-[56px] items-start justify-between">
+          <div className="flex mt-[34px] mb-[56px] items-start justify-between">
             <p className="text-white/[60%] text-[14px] font-manrope">
               Experience serene living surrounded by rolling hills and
               breathtaking vineyards. These countryside homes offer the perfect
@@ -205,7 +209,7 @@ export default function Page() {
             <InfoBlock title="Units" info="50" />
             <InfoBlock title="Investment Duration" info="10 Months" />
           </div>
-          <button className="bg-[#D4FAFE] w-[198px] px-4 mt-8 border  text-[#063D37] py-2">
+          <button className="bg-[#D4FAFE] w-[198px] px-4 mt-8 border text-[#063D37] py-2">
             Invest Now
           </button>
         </div>

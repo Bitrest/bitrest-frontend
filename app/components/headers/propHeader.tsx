@@ -11,8 +11,8 @@ export default function PropHeader() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (
-    <div className="w-full bg-[#101313] px-[72px] border-b-[1px] border-[#D4FAFE05]">
-      <div className="w-full relative bg-transparent flex justify-between items-center  py-8">
+    <div className="w-full bg-[#101313] px-[36px] border-b-[1px] border-[#D4FAFE05]">
+      <div className="w-full relative bg-transparent flex justify-between items-center py-8">
         <Image className="mr-[40px]" src={logo} alt="logo" />
         <div className="w-[450px] hidden lg:flex items-center rounded-[8px] bg-white/[8%]">
           <input
@@ -26,7 +26,7 @@ export default function PropHeader() {
             alt="Search"
           />
         </div>
-        <div className="font-outfit  hidden text-[14px] lg:flex items-center space-x-3">
+        <div className="font-outfit hidden text-[14px] lg:flex items-center space-x-3">
           <p>Invest</p>
           <p>Portfolio</p>
           <p>Profile</p>
@@ -35,7 +35,7 @@ export default function PropHeader() {
 
         <div
           onClick={() => setShowMenu(!showMenu)}
-          className="flex z-40 sm:hidden flex-col space-y-2"
+          className="flex z-40 lg:hidden flex-col space-y-2"
         >
           <div
             className={`w-[50px] ${
@@ -45,7 +45,7 @@ export default function PropHeader() {
           <div
             className={`w-[50px] ${
               showMenu ? "hidden" : "block"
-            } h-[2px] rounded-sm  transition-transform bg-white`}
+            } h-[2px] rounded-sm transition-transform bg-white`}
           ></div>
           <div
             className={`w-[50px] ${
@@ -68,13 +68,31 @@ export default function PropHeader() {
             <Image className="z-40" src={moon} alt="Night Mode" />
           </Link>
         </div>
-        <button className="bg-[#D4FAFE]  hidden lg:block w-fit px-4  border  text-[#063D37] py-2">
+        <button className="bg-[#D4FAFE] hidden lg:block w-fit px-4 border text-[#063D37] py-2">
           Connect Wallet
         </button>
       </div>
       {showMenu && (
-        <div className="absolute text-[20px] justify-start items-start flex flex-col px-8 space-y-5  bg-[#101313]  min-h-screen  w-full">
-          <div className="w-[450px] flex items-center rounded-[8px] bg-white/[8%]">
+        <div className="absolute top-0 left-0 flex  px-[36px] items-start justify-start text-white text-[20px] bg-[#101313] flex-col space-y-5 z-50 w-full h-screen">
+          <div className="w-full flex py-8 justify-between mb-[30px] ">
+            <Image className="" src={logo} alt="logo" />
+            <div
+              onClick={() => setShowMenu(!showMenu)}
+              className="flex z-40 lg:hidden flex-col space-y-2"
+            >
+              <div
+                className={`w-[50px]  h-[2px] rounded-sm transition-transform bg-white`}
+              ></div>
+              <div
+                className={`w-[50px]  h-[2px] rounded-sm transition-transform bg-white`}
+              ></div>
+              <div
+                className={`w-[50px]  h-[2px] rounded-sm transition-transform bg-white`}
+              ></div>
+            </div>
+          </div>
+
+          <div className="w-[90%] max-w-[450px] flex items-center rounded-[8px] bg-white/[8%]">
             <input
               type="text"
               className="h-[40px] text-[14px] outline-none bg-transparent w-full px-4 text-white placeholder-white/60"
@@ -90,7 +108,7 @@ export default function PropHeader() {
           <p>Invest</p>
           <p>Portfolio</p>
           <p>Profile</p>
-          <div className="font-outfit  flex items-center space-x-4">
+          <div className="font-outfit flex items-center space-x-4">
             <Link
               className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
               href={"/signin"}
@@ -104,7 +122,7 @@ export default function PropHeader() {
               <Image className="z-40" src={moon} alt="Night Mode" />
             </Link>
           </div>
-          <button className="bg-[#D4FAFE]  w-fit px-4  border  text-[#063D37] py-2">
+          <button className="bg-[#D4FAFE] w-fit px-4 border text-[#063D37] py-2">
             Connect Wallet
           </button>
         </div>

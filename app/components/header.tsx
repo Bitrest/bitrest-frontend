@@ -23,17 +23,17 @@ export default function Header() {
           <div
             className={`w-[50px] ${
               showMenu ? "rotate-45 translate-y-2" : ""
-            } h-[5px] rounded-sm transition-transform bg-[#5BC6A3]`}
+            } h-[2px] rounded-sm transition-transform bg-[#5BC6A3]`}
           ></div>
           <div
             className={`w-[50px] ${
               showMenu ? "hidden" : "block"
-            } h-2 rounded-sm  transition-transform bg-[#5BC6A3]`}
+            } h-[2px] rounded-sm  transition-transform bg-[#5BC6A3]`}
           ></div>
           <div
             className={`w-[50px] ${
               showMenu ? "-rotate-45 -translate-y-2" : ""
-            } h-[5px] rounded-sm transition-transform bg-[#5BC6A3]`}
+            } h-[2px] rounded-sm transition-transform bg-[#5BC6A3]`}
           ></div>{" "}
         </div>
 

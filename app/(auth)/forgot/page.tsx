@@ -4,7 +4,6 @@ import logo from "@/public/icons/Bitrest full.svg";
 import Link from "next/link";
 import * as yup from "yup";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthHook } from "@/app/_hooks/auth/auth.hook";
@@ -19,7 +18,6 @@ export type FormValues = yup.InferType<typeof schema>;
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const router = useRouter();
 
   const {
     register,
@@ -43,7 +41,6 @@ export default function Page() {
         message: response.message,
         type: ToastType.success,
       });
-      router.push("/reset-password");
     } else {
       toastAlert({
         message: response.message,

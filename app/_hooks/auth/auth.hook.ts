@@ -17,7 +17,7 @@ export class AuthHook {
     body: SignUpRequestInterface
   ): Promise<IApiResponse<null>> => {
     try {
-      const { data, status } = await axiosClient.post("/api/auth/signUp", body);
+      const { data, status } = await axiosClient.post("api/auth/signUp", body);
 
       return {
         data,
@@ -46,7 +46,7 @@ export class AuthHook {
     body: SignInRequestInterface
   ): Promise<IApiResponse<null>> => {
     try {
-      const { data, status } = await axiosClient.post("/api/auth/signin", body);
+      const { data, status } = await axiosClient.post("api/auth/signin", body);
 
       return {
         data,
@@ -76,7 +76,7 @@ export class AuthHook {
   ): Promise<IApiResponse<null>> => {
     try {
       const { data, status } = await axiosClient.post(
-        "/api/auth/verify-otp",
+        "api/auth/verify-otp",
         body
       );
 
@@ -108,7 +108,7 @@ export class AuthHook {
   ): Promise<IApiResponse<null>> => {
     try {
       const { data, status } = await axiosClient.post(
-        "/api/auth/resend-otp",
+        "api/auth/resend-otp",
         body
       );
 
@@ -140,7 +140,7 @@ export class AuthHook {
   ): Promise<IApiResponse<null>> => {
     try {
       const { data, status } = await axiosClient.post(
-        "/api/auth/forgot-password",
+        "api/auth/forgot-password",
         body
       );
 
@@ -172,7 +172,7 @@ export class AuthHook {
   ): Promise<IApiResponse<null>> => {
     try {
       const { data, status } = await axiosClient.post(
-        "/api/auth/reset-password",
+        "api/auth/reset-password",
         body
       );
 

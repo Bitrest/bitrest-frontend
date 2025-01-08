@@ -4,7 +4,7 @@ import logo from "@/public/icons/Bitrest full.svg";
 import Link from "next/link";
 import * as yup from "yup";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthHook } from "@/app/_hooks/auth/auth.hook";
@@ -31,8 +31,7 @@ export type FormValues = yup.InferType<typeof schema>;
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
+  const params = useParams<{ token: string }>();
 
   const {
     register,
@@ -50,7 +49,7 @@ export default function Page() {
 
     const response = await AuthHook.resetPassword({
       newPassword: data.newPassword,
-      token: token!,
+      token: params.token!,
     });
     setIsLoading(false);
 

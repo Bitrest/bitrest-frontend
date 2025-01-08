@@ -55,7 +55,7 @@ export default function Page() {
         message: response.message,
         type: ToastType.success,
       });
-      router.push(`/verify?email=${data.email}`);
+      router.push(`/verify/${data.email}`);
     } else {
       toastAlert({
         message: response.message,

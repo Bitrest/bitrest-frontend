@@ -2,7 +2,7 @@
 import Image from "next/image";
 import logo from "@/public/icons/Bitrest full.svg";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import {
   useState,
   useRef,
@@ -30,8 +30,7 @@ export default function Page() {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const params = useParams<{ email: string }>();
 
   const {
     //register,
@@ -94,7 +93,7 @@ export default function Page() {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setIsLoading(true);
     const response = await AuthHook.verifyOTP({
-      email: email || "",
+      email: params.email || "",
       otp: data.otp,
     });
     setIsLoading(false);
@@ -117,7 +116,7 @@ export default function Page() {
 
   const handleResend = async () => {
     setShowResend(true);
-    const response = await AuthHook.resendOTP({ email: email! });
+    const response = await AuthHook.resendOTP({ email: params.email! });
     setShowResend(false);
 
     if (response.success) {
@@ -147,8 +146,8 @@ export default function Page() {
               Verify Your Identity
             </p>
             <p className="text-[16px] text-white/60 text-left mt-[7px]">
-              We&apos;ve sent a verification code to {email}. Enter the code
-              below to continue.
+              We&apos;ve sent a verification code to {params.email}. Enter the
+              code below to continue.
             </p>
             <form
               onSubmit={handleSubmit(onSubmit)}

@@ -31,6 +31,7 @@ export default function Page() {
 
   const router = useRouter();
   const params = useParams<{ email: string }>();
+  const email = decodeURIComponent(params.email);
 
   const {
     //register,
@@ -93,7 +94,7 @@ export default function Page() {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setIsLoading(true);
     const response = await AuthHook.verifyOTP({
-      email: params.email || "",
+      email: email,
       otp: data.otp,
     });
     setIsLoading(false);
@@ -146,8 +147,8 @@ export default function Page() {
               Verify Your Identity
             </p>
             <p className="text-[16px] text-white/60 text-left mt-[7px]">
-              We&apos;ve sent a verification code to {params.email}. Enter the
-              code below to continue.
+              We&apos;ve sent a verification code to {email}. Enter the code
+              below to continue.
             </p>
             <form
               onSubmit={handleSubmit(onSubmit)}

@@ -4,7 +4,7 @@ import logo from "@/public/icons/Bitrest full.svg";
 import Link from "next/link";
 import * as yup from "yup";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthHook } from "@/app/_hooks/auth/auth.hook";
@@ -12,7 +12,18 @@ import { toastAlert, ToastType } from "@/app/_utils/notifications/toast";
 import TextInput from "@/app/components/inputs/textInput";
 
 const schema = yup.object({
-  email: yup.string().email().required("Email is required"),
+  newPassword: yup
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
+    )
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("newPassword")], "Passwords must match")
+    .required("Please confirm your password"),
 });
 
 export type FormValues = yup.InferType<typeof schema>;
@@ -20,6 +31,8 @@ export type FormValues = yup.InferType<typeof schema>;
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
 
   const {
     register,
@@ -35,7 +48,10 @@ export default function Page() {
     // Form submission logic
     setIsLoading(true);
 
-    const response = await AuthHook.forgotPassword(data);
+    const response = await AuthHook.resetPassword({
+      newPassword: data.newPassword,
+      token: token!,
+    });
     setIsLoading(false);
 
     if (response.success) {
@@ -43,7 +59,7 @@ export default function Page() {
         message: response.message,
         type: ToastType.success,
       });
-      router.push("/reset-password");
+      router.push("/signin");
     } else {
       toastAlert({
         message: response.message,
@@ -61,19 +77,30 @@ export default function Page() {
         <div className="col-span-1  flex justify-center ">
           <div className="h-fit bg-[#10352F] w-[497px] rounded-[12px] border-[2px]  py-8 px-8 z-10  border-white/[11%]">
             <p className="text-[30px] text-left font-[500]">
-              Forgot your Password?
+              Create a New Password
             </p>
             <p className="text-[16px] text-white/60 text-left mt-[7px]">
-              Enter your email below to get started!{" "}
+              Enter your new password below
             </p>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-[32px]">
+              <div className="w-full mb-[32px]">
+                <TextInput
+                  label="New Password"
+                  placeholder="Enter your new password"
+                  name="newPassword"
+                  register={register}
+                  required
+                  error={errors.newPassword}
+                />
+              </div>
+
               <TextInput
-                label="Email"
-                placeholder="Enter your email address"
-                name="email"
+                label="Confirm Password"
+                placeholder="Re-enter your new password"
+                name="confirmPassword"
                 register={register}
                 required
-                error={errors.email}
+                error={errors.confirmPassword}
               />
               <button
                 type="submit"

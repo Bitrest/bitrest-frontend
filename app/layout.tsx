@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Manrope, Outfit } from "next/font/google";
 import "./globals.css";
+import ToastProvider from "./_utils/context/toastContext";
+import { UserContextProvider } from "./_utils/context/userContext";
 
 const carbonic = localFont({
   src: [
@@ -119,7 +121,9 @@ export default function RootLayout({
       <body
         className={`${carbonic.variable} ${manrope.variable} ${outfit.variable}  bg-custom-gradient font-carbonic antialiased min-h-screen overflow-x-hidden`}
       >
-        {children}
+        <UserContextProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </UserContextProvider>
       </body>
     </html>
   );

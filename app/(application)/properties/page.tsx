@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Image from "next/image";
@@ -7,7 +8,11 @@ import { propertiesData } from "@/app/constants";
 import dropdownIcon from "@/public/icons/dropdown.svg";
 import filterIcon from "@/public/icons/filters.svg";
 import { useState } from "react";
+import { useListings } from "@/app/_hooks/listing/useListings";
 export default function Page() {
+  const { listingLoading, mutateListings, error, listings, page } =
+    useListings();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (

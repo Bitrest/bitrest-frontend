@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Image from "next/image";
@@ -13,7 +14,14 @@ import chart from "@/public/icons/chart.svg";
 import calender from "@/public/icons/calendar.svg";
 import duration from "@/public/icons/duration.svg";
 import commercial from "@/public/icons/commercial.svg";
+import { useSingleListing } from "@/app/_hooks/listing/useSingleListing";
+import { useParams } from "next/navigation";
 export default function Page() {
+  const params = useParams<{ id: string }>();
+
+  const { listing, error, singleListingLoading, mutateSingleListing } =
+    useSingleListing({ id: params.id });
+
   const [activeTab, setActiveTab] = useState("essential");
 
   // Tabs data

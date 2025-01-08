@@ -1,11 +1,70 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 import Image from "next/image";
 import logo from "@/public/images/plain logo.svg";
 import Link from "next/link";
 import estate from "@/public/images/estate bit sv.svg";
 import google from "@/public/icons/google.svg";
 import apple from "@/public/icons/apple.svg";
+import * as yup from "yup";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AuthHook } from "@/app/_hooks/auth/auth.hook";
+import { toastAlert, ToastType } from "@/app/_utils/notifications/toast";
+import TextInput from "@/app/components/inputs/textInput";
+
+const schema = yup.object({
+  email: yup.string().email().required("Email is required"),
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .required("Password is required"),
+  privacy: yup.boolean().required().default(false),
+});
+
+export type FormValues = yup.InferType<typeof schema>;
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    mode: "all",
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    // Form submission logic
+    setIsLoading(true);
+
+    const { privacy, ...request } = data;
+    const response = await AuthHook.signUp(request);
+    setIsLoading(false);
+
+    if (response.success) {
+      toastAlert({
+        message: response.message,
+        type: ToastType.success,
+      });
+      router.push(`/verify?email=${data.email}`);
+    } else {
+      toastAlert({
+        message: response.message,
+        type: ToastType.error,
+      });
+      reset();
+    }
+  };
+
   return (
     <div className="w-full bg-[#063D37] text-white relative items-center justify-items-center min-h-screen overflow-hidden font-carbonic">
       <Image
@@ -34,7 +93,9 @@ export default function Page() {
             <p className="text-[30px] text-center">Create Account</p>
             <p className="text-[16px] text-white/60 text-center mt-[7px]">
               Already have an account?{" "}
-              <span className="text-[#5BC6A3]">Log in</span>{" "}
+              <Link href={"/signin"} className="text-[#5BC6A3]">
+                Log in
+              </Link>{" "}
             </p>
 
             {/* Auth Buttons */}
@@ -54,66 +115,88 @@ export default function Page() {
               <p className="px-4 text-white/[22%]">or</p>
               <hr className="flex-grow h-[1px] bg-white/[22%]" />
             </div>
-
-            <div className="space-y-[32px]">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-[32px]">
               <div className="flex w-full space-x-2">
-                <div className="w-full space-y-[12px]">
-                  <p className="text-white/80">First Name</p>
-                  <input
-                    type="text"
-                    className="h-[50px] w-full bg-white/[8%] rounded-[8px] px-4"
-                    placeholder="Enter First Name"
-                  />
-                </div>
-                <div className="w-full space-y-[12px]">
-                  <p className="text-white/80">Last Name</p>
-                  <input
-                    type="text"
-                    className="h-[50px] w-full bg-white/[8%] rounded-[8px] px-4"
-                    placeholder="Enter Last Name"
-                  />
-                </div>
-              </div>
-              <div className="w-full space-y-[12px]">
-                <p className="text-white/80">Email</p>
-                <input
-                  type="text"
-                  className="h-[50px] w-full bg-white/[8%] rounded-[8px] px-4"
-                  placeholder="Enter Email Address"
+                <TextInput
+                  label="First Name"
+                  placeholder="Enter your first name"
+                  name="firstName"
+                  register={register}
+                  required
+                  error={errors.firstName}
+                />
+                <TextInput
+                  label="Last Name"
+                  placeholder="Enter your last name"
+                  name="lastName"
+                  register={register}
+                  required
+                  error={errors.lastName}
                 />
               </div>
-              <div className="w-full">
-                <div className="w-full space-y-[12px]">
-                  <p className="text-white/80">Password</p>
+              <TextInput
+                label="Email"
+                placeholder="Enter your email address"
+                name="email"
+                register={register}
+                required
+                error={errors.email}
+              />
+              <TextInput
+                label="Password"
+                placeholder="Enter your password"
+                name="password"
+                register={register}
+                required
+                error={errors.password}
+              />
+              <div className="w-full mt-[40px] mb-[20px] space-y-4">
+                <div className="flex w-full space-x-4 items-center">
                   <input
-                    type="text"
-                    className="h-[50px] w-full bg-white/[8%] rounded-[8px] px-4"
-                    placeholder="Enter Password"
+                    type="checkbox"
+                    className="accent-[#5BC6A3]"
+                    {...register("privacy")}
                   />
+                  <p
+                    className={`text-[14px] sm:text-[16px] font-manrope text-white/80 `}
+                  >
+                    By creating an account, I agree to our{" "}
+                    <span className="underline">Terms</span> of use and{" "}
+                    <span className="underline">Privacy </span>
+                    Policy{" "}
+                  </p>
                 </div>
               </div>
-            </div>
-
-            <div className="w-full mt-[40px] mb-[20px] space-y-4">
-              <div className="flex w-full space-x-4 items-center">
-                <input
-                  type="checkbox"
-                  defaultChecked
-                  className="accent-[#5BC6A3]"
-                />
-                <p
-                  className={`text-[14px] sm:text-[16px] font-manrope text-white/80 `}
-                >
-                  By creating an account, I agree to our{" "}
-                  <span className="underline">Terms</span> of use and{" "}
-                  <span className="underline">Privacy </span>
-                  Policy{" "}
-                </p>
-              </div>
-            </div>
-            <button className="bg-[#D4FAFE] w-full px-4 mt-8 border  text-[#063D37] py-2">
-              Create Account
-            </button>
+              <button
+                type="submit"
+                className="bg-[#D4FAFE] w-full flex items-center justify-center px-4 mt-8 border  text-[#063D37] py-2"
+              >
+                {isLoading ? (
+                  <div className="flex items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  </div>
+                ) : (
+                  "Create Account"
+                )}
+              </button>
+            </form>
           </div>
         </div>
       </div>

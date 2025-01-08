@@ -117,7 +117,7 @@ export default function Page() {
 
   const handleResend = async () => {
     setShowResend(true);
-    const response = await AuthHook.resendOTP({ email: params.email! });
+    const response = await AuthHook.resendOTP({ email: email });
     setShowResend(false);
 
     if (response.success) {

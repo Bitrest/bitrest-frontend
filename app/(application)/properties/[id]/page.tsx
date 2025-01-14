@@ -90,7 +90,9 @@ export default function Page() {
 
       <div className="flex flex-col lg:flex-row items-start gap-8 justify-between mt-[82px] px-[40px]">
         <div className="w-full">
-          <p className="text-[24px]">Scenic Countryside Homes in Lagos</p>
+          <p className="text-[24px] text-white">
+            Scenic Countryside Homes in Lagos
+          </p>
           <div className="flex gap-2 text-white/[60%]  text-[16px] mt-[26px] items-center">
             <Image src={map} alt="map" />
             <p className="">Lagos, Nigeria</p>
@@ -387,9 +389,13 @@ export default function Page() {
         {/* Progress Section */}
         <div className="px-[22px] rounded-[20px] border-[1px] border-[#262930] font-[500] font-manrope w-full lg:w-[405px]  py-[40px]">
           <div className="flex justify-between">
-            <div className="font-manrope">
-              <p className="font-[700] text-[16px]">Hertex Holdings</p>
-              <p className="font-[500] text-[12px]">Lagos, Nigeria</p>
+            <div className="font-manrope ">
+              <p className="font-[700] text-white text-[16px]">
+                Hertex Holdings
+              </p>
+              <p className="font-[500] text-white text-[12px]">
+                Lagos, Nigeria
+              </p>
             </div>
             <Image src={hold} alt={"icon"} />
           </div>
@@ -425,7 +431,7 @@ export default function Page() {
           </div>
 
           <button
-            onClick={() => router.push("properties/1/checkout")}
+            onClick={() => router.push("/properties/1/checkout")}
             className="bg-[#D4FAFE] mt-[21px] font-carbonic  rounded-[6px]  w-full text-[18px] px-4 border  text-[#116158] py-2"
           >
             Invest

@@ -33,7 +33,7 @@ export default function Page() {
           <div className="flex gap-[40px] items-center">
             <Image src={houseImage} alt="Small Image" />
             <div>
-              <p className="text-[24px]">JAO Apartments</p>
+              <p className="text-[24px] text-white">JAO Apartments</p>
               <div className="text-white/60 flex">
                 <Image src={map} alt="Small Image" />
                 <p>Lagos, Nigeria</p>
@@ -137,7 +137,9 @@ export default function Page() {
           {/* Connect Wallet */}
           <div className="flex mt-[34px] w-full justify-between items-end">
             <div className="flex flex-col gap-[25px] items-start">
-              <p className="font-[700] text-[16px]">Connected Wallet</p>
+              <p className="font-[700] text-white text-[16px]">
+                Connected Wallet
+              </p>
               <p className="font-[500] text-[14px] font-manrope text-white/60">
                 Address
               </p>
@@ -146,15 +148,19 @@ export default function Page() {
             <div className="flex flex-col gap-[25px] items-end">
               <div className="flex gap-[5px] items-center">
                 <Image src={phantom} alt="phantom" />
-                <p>Phantom Wallet</p>
+                <p className="font-[700] text-white text-[16px]">
+                  Phantom Wallet
+                </p>
               </div>
-              <p>bc1p6tq0yv...aglq7wek9x</p>
+              <p className="font-[500] text-[14px] font-manrope text-white/60">
+                bc1p6tq0yv...aglq7wek9x
+              </p>
             </div>
           </div>
 
           <div className=" flex space-x-[12px] mt-[60px] items-start">
             <Image src={bulb} alt="bulb" />
-            <p className="text-[14px]">
+            <p className="text-[14px] text-white/60">
               Confirm that your wallet is on the Bitcoin Mainnet Network before
               proceeding. Using a different network may result in irreversible
               loss of funds.
@@ -219,7 +225,7 @@ const CellBox = (props: { title: string; value: any; icon: any }) => {
     <div className="w-full flex items-center justify-between font-manrope">
       <div className="flex items-center gap-[10px]">
         <Image src={props.icon} alt="icon" />
-        <p className={""}>{props.title}</p>
+        <p className={"text-white"}>{props.title}</p>
       </div>
 
       <div className="text-[14px]  font-[500] text-white">{props.value}</div>
@@ -230,7 +236,7 @@ const CellBox = (props: { title: string; value: any; icon: any }) => {
 const BoldCellBox = (props: { title: string; value: any }) => {
   return (
     <div className="w-full flex items-center justify-between font-manrope">
-      <p className="text-[14px] font-[600]">{props.title}</p>
+      <p className="text-[14px] text-white/60 font-[600]">{props.title}</p>
 
       <div className="text-[16px] font-carbonic  font-[600] text-white">
         {props.value}

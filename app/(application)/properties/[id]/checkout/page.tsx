@@ -14,6 +14,7 @@ import bulb from "@/public/icons/gray bulb.svg";
 import back from "@/public/icons/gray back.svg";
 import { useState } from "react";
 import PaymentModal from "@/app/components/modals/paymentModal";
+import Link from "next/link";
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
@@ -22,14 +23,14 @@ export default function Page() {
       {showPaymentModal && (
         <PaymentModal onClose={() => setShowPaymentModal(false)} />
       )}
-      <div className="flex gap-[12px] items-center ">
+      <Link href={"/properties/1"} className="flex gap-[12px] items-center ">
         <Image src={back} alt="back" />
-        <p className="text-[18px] font-[500]">Back</p>
-      </div>
+        <p className="text-[18px] font-[500] text-white">Back</p>
+      </Link>
 
-      <div className="w-full flex mt-[80px] flex-col sm:flex-row">
+      <div className="w-full flex mt-[80px] justify-between flex-col sm:flex-row">
         {/* Brief Overview */}
-        <div className="w-full">
+        <div className="w-full sm:max-w-[554px]">
           <div className="flex gap-[40px] items-center">
             <Image src={houseImage} alt="Small Image" />
             <div>
@@ -41,7 +42,9 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-[90px]">
-            <p className="text-[20px] font-[700]">Investment Summary</p>
+            <p className="text-[20px] font-[700] text-white">
+              Investment Summary
+            </p>
             <div className="space-y-[40px] mt-[40px]">
               <CellBox
                 icon={billIcon}
@@ -81,18 +84,20 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="w-full py-[40px] px-[20px] border-[1px] border-[#191C1C] rounded-[20px]">
+        <div className="w-full sm:max-w-[602px] py-[40px] px-[20px] border-[1px] border-[#191C1C] rounded-[20px]">
           <p className="text-[#33D780] font-carbonic font-[600]">Invest Now</p>
           <p className="text-[14px] text-white/60">
             To invest now, enter the number of shares you will like to purchase
           </p>
 
-          <p className="mt-[60px] mb-[20px]">How many units do you want</p>
+          <p className="mt-[60px] text-white mb-[20px]">
+            How many units do you want
+          </p>
 
           <div className="flex w-full h-[60px] items-center rounded-[8px] justify-between border-[#272F2F] border-[1.5px] px-[20px] bg-white/[1%]">
             <div className="flex gap-[10px]">
               <Image src={tag} alt="tag" />
-              <p>500</p>
+              <p className="text-[20px] font-[500] text-white">500</p>
             </div>
             <p className="text-[14px] text-[#33D780]">Max</p>
           </div>

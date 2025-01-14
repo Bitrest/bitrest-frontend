@@ -88,7 +88,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-start gap-8 justify-between mt-[82px] px-[40px]">
+      <div className="flex w-full flex-col lg:flex-row items-start gap-8 justify-between mt-[82px] px-[40px]">
         <div className="w-full">
           <p className="text-[24px] text-white">
             Scenic Countryside Homes in Lagos
@@ -326,60 +326,43 @@ export default function Page() {
               </div>
             )}
             {activeTab === "documents" && (
-              <div className="w-full py-2 pt-[62px] space-y-[20px]">
-                <div className="h-[82px] bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
-                  <div className="flex items-center gap-2">
-                    <Image src={documentIcon} alt="document" />
-                    <p className="text-[16px] text-white font-[500]">W-9</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Image src={downloadIcon} alt="download" />
-                    <p className="text-[16px] font-[500] text-[#26CE92]">
-                      Download
-                    </p>
-                  </div>
-                </div>
-                <div className="h-[82px]  bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
-                  <div className="flex items-center gap-2">
-                    <Image src={documentIcon} alt="document" />
-                    <p className="text-[16px] text-white font-[500]">
-                      Schedule of real estate
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Image src={downloadIcon} alt="download" />
-                    <p className="text-[16px] font-[500] text-[#26CE92]">
-                      Download
-                    </p>
-                  </div>
-                </div>
-                <div className="h-[82px] bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
-                  <div className="flex items-center gap-2">
-                    <Image src={documentIcon} alt="document" />
-                    <p className="text-[16px] text-white font-[500]">
-                      Investor Packet
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Image src={downloadIcon} alt="download" />
-                    <p className="text-[16px] font-[500] text-[#26CE92]">
-                      Download
-                    </p>
-                  </div>
-                </div>
-                <div className="h-[82px] flex bg-[#191C1C] radius-[8px] justify-between px-[16px] py-[20px] ">
-                  <div className="flex items-center gap-2">
-                    <Image src={documentIcon} alt="document" />
-                    <p className="text-[16px] text-white font-[500]">
-                      Q1 2025 Asset Management Report
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Image src={downloadIcon} alt="download" />
-                    <p className="text-[16px] font-[500] text-[#26CE92]">
-                      Download
-                    </p>
-                  </div>
+              <div className="w-full py-2 pt-[62px] space-y-[20px] min-h-[600px]">
+                <div className="grid gap-5 w-full">
+                  {[
+                    { title: "W-9", type: "document" },
+                    { title: "Schedule of real estate", type: "document" },
+                    { title: "Investor Packet", type: "document" },
+                    {
+                      title: "Q1 2025 Asset Management Report",
+                      type: "document",
+                    },
+                  ].map((doc, index) => (
+                    <div
+                      key={index}
+                      className="h-[82px] bg-[#191C1C] w-full rounded-[8px] flex justify-between px-[16px] py-[20px] hover:bg-[#1f2222] transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={documentIcon}
+                          alt="document"
+                          className="w-6 h-6"
+                        />
+                        <p className="text-[16px] text-white font-[500]">
+                          {doc.title}
+                        </p>
+                      </div>
+                      <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                        <Image
+                          src={downloadIcon}
+                          alt="download"
+                          className="w-5 h-5"
+                        />
+                        <p className="text-[16px] font-[500] text-[#26CE92]">
+                          Download
+                        </p>
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -441,7 +424,7 @@ export default function Page() {
 
       <div className="flex flex-col  mt-[50px] sm:mt-[250px] items-center">
         <Image src={box} alt="box" />
-        <p className="mt-[30px] font-[16px]">Hertex Holdings</p>
+        <p className="mt-[30px]  text-white font-[16px]">Hertex Holdings</p>
 
         <p className="text-[12px] text-white/60 mt-[20px]">
           1234 Blockchain Ave, Suite 100, San Francisco, CA 94107

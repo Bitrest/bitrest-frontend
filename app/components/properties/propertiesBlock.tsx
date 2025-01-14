@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import btc from "@/public/icons/color btc.svg";
+import Link from "next/link";
 
 const PropertiesCell = (props: {
   title: string;
@@ -13,7 +14,7 @@ const PropertiesCell = (props: {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
-    <div className="w-full">
+    <Link href={"/properties/1"} className="w-full">
       <div className="relative group">
         {/* Image container */}
         <div className="relative w-full aspect-video">
@@ -106,7 +107,7 @@ const PropertiesCell = (props: {
         <p>{props.units} Units</p>
         <p>{props.address}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -10,11 +10,13 @@ import filterIcon from "@/public/icons/filters.svg";
 import { useState } from "react";
 import { useListings } from "@/app/_hooks/listing/useListings";
 import PropertiesCell from "@/app/components/properties/propertiesBlock";
+import { useRouter } from "next/navigation";
 export default function Page() {
   const { listingLoading, mutateListings, error, listings, page } =
     useListings();
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const router = useRouter();
 
   return (
     <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[36px]">
@@ -215,7 +217,10 @@ export default function Page() {
             <InfoBlock title="Units" info="50" />
             <InfoBlock title="Investment Duration" info="10 Months" />
           </div>
-          <button className="bg-[#D4FAFE] w-[198px] px-4 mt-8 border text-[#063D37] py-2">
+          <button
+            onClick={() => router.push("/properties/1")}
+            className="bg-[#D4FAFE] w-[198px] px-4 mt-8 border text-[#063D37] py-2"
+          >
             Invest Now
           </button>
         </div>

@@ -15,7 +15,7 @@ import calender from "@/public/icons/calendar.svg";
 import duration from "@/public/icons/duration.svg";
 import commercial from "@/public/icons/commercial.svg";
 import { useSingleListing } from "@/app/_hooks/listing/useSingleListing";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import documentIcon from "@/public/icons/Document Icon.svg";
 import downloadIcon from "@/public/icons/Download Icon.svg";
 import box from "@/public/icons/box cube.svg";
@@ -36,6 +36,7 @@ export default function Page() {
     { id: "documents", label: "Documents" },
   ];
   const sliderRef = useRef<any>(null);
+  const router = useRouter();
 
   return (
     <div className="bg-[#101313] flex flex-col items-center min-h-screen pt-[50px] pb-[100px] w-full">
@@ -423,7 +424,10 @@ export default function Page() {
             investment, designed with sustainability in mind.
           </div>
 
-          <button className="bg-[#D4FAFE] mt-[21px] font-carbonic  rounded-[6px]  w-full text-[18px] px-4 border  text-[#116158] py-2">
+          <button
+            onClick={() => router.push("properties/1/checkout")}
+            className="bg-[#D4FAFE] mt-[21px] font-carbonic  rounded-[6px]  w-full text-[18px] px-4 border  text-[#116158] py-2"
+          >
             Invest
           </button>
         </div>

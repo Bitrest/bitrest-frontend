@@ -16,6 +16,10 @@ import duration from "@/public/icons/duration.svg";
 import commercial from "@/public/icons/commercial.svg";
 import { useSingleListing } from "@/app/_hooks/listing/useSingleListing";
 import { useParams } from "next/navigation";
+import documentIcon from "@/public/icons/Document Icon.svg";
+import downloadIcon from "@/public/icons/Download Icon.svg";
+import box from "@/public/icons/box cube.svg";
+import PropertiesCell from "@/app/components/properties/propertiesBlock";
 export default function Page() {
   const params = useParams<{ id: string }>();
 
@@ -34,7 +38,7 @@ export default function Page() {
   const sliderRef = useRef<any>(null);
 
   return (
-    <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full">
+    <div className="bg-[#101313] flex flex-col items-center min-h-screen pt-[50px] pb-[100px] w-full">
       {/* Image Slide */}
       <div className="w-full">
         {/* Image Slider Section */}
@@ -83,7 +87,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center gap-8 justify-between mt-[82px] px-[40px]">
+      <div className="flex flex-col lg:flex-row items-start gap-8 justify-between mt-[82px] px-[40px]">
         <div className="w-full">
           <p className="text-[24px]">Scenic Countryside Homes in Lagos</p>
           <div className="flex gap-2 text-white/[60%]  text-[16px] mt-[26px] items-center">
@@ -195,103 +199,183 @@ export default function Page() {
               </div>
             )}
             {activeTab === "essential" && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 text-white gap-y-[50px] py-[50px]">
-                {/* Minimum Investment */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30]text-white w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={coin} alt="icon" />
+              <div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 text-white gap-y-[50px] py-[50px]">
+                  {/* Minimum Investment */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30]text-white w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={coin} alt="icon" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Minimum Investment
+                      </p>
+                      <div className="text-[16px] flex font-[600]">
+                        <div className="flex items-center">
+                          <Image src={btc} alt="btc" />
+                          0.01847{" "}
+                          <span className="font-[500] text-white/[60%]">
+                            ($1813.30)
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">
-                      Minimum Investment
-                    </p>
-                    <div className="text-[16px] flex font-[600]">
-                      <div className="flex items-center">
-                        <Image src={btc} alt="btc" />
-                        0.01847{" "}
-                        <span className="font-[500] text-white/[60%]">
-                          ($1813.30)
-                        </span>
+                  {/* Expected ROI */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={chart} alt="chart" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Expected ROI
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>23.5%</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Return Potential */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={chart} alt="chart" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Total Return Potential
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>3.5x</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Investmentb Duration */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={duration} alt="duration" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Investment Duration
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>12 Months</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Commercial */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={commercial} alt="commercial" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Property Type
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>Commercial</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Closing Date */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={calender} alt="calendar" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Closing Date
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>February 3rd, 2028</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Launch Date */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={calender} alt="calendar" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Launch Date
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>January 3rd. 2025</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* Expected ROI */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={chart} alt="chart" />
-                  </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">Expected ROI</p>
-                    <div className="text-[16px] font-[600]">
-                      <p>23.5%</p>
-                    </div>
-                  </div>
+                <hr className="w-full border-[1px] border-[#262930]" />
+                <div className="mt-[60px]">
+                  <p className="font-[500] text-[24px]">Description</p>
+                  <p className="font-manrope text-[16px] leading-[37px] text-white/60">
+                    Scenic Countryside Homes offers a unique opportunity to
+                    invest in a beautifully designed mixed-use property set in a
+                    serene countryside location. This development combines the
+                    charm of nature with the modern conveniences of urban
+                    living, promising not just a property, but an experience.
+                    With an emphasis on eco-friendly design and sustainable
+                    construction, this project presents an ideal investment for
+                    those seeking long-term growth in the real estate sector.
+                  </p>
                 </div>
-                {/* Return Potential */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={chart} alt="chart" />
+              </div>
+            )}
+            {activeTab === "documents" && (
+              <div className="w-full py-2 pt-[62px] space-y-[20px]">
+                <div className="h-[82px] bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
+                  <div className="flex items-center gap-2">
+                    <Image src={documentIcon} alt="document" />
+                    <p className="text-[16px] text-white font-[500]">W-9</p>
                   </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">
-                      Total Return Potential
+                  <div className="flex items-center gap-2">
+                    <Image src={downloadIcon} alt="download" />
+                    <p className="text-[16px] font-[500] text-[#26CE92]">
+                      Download
                     </p>
-                    <div className="text-[16px] font-[600]">
-                      <p>3.5x</p>
-                    </div>
                   </div>
                 </div>
-                {/* Investmentb Duration */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={duration} alt="duration" />
-                  </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">
-                      Investment Duration
+                <div className="h-[82px]  bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
+                  <div className="flex items-center gap-2">
+                    <Image src={documentIcon} alt="document" />
+                    <p className="text-[16px] text-white font-[500]">
+                      Schedule of real estate
                     </p>
-                    <div className="text-[16px] font-[600]">
-                      <p>12 Months</p>
-                    </div>
                   </div>
-                </div>
-                {/* Commercial */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={commercial} alt="commercial" />
-                  </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">
-                      Property Type
+                  <div className="flex items-center gap-2">
+                    <Image src={downloadIcon} alt="download" />
+                    <p className="text-[16px] font-[500] text-[#26CE92]">
+                      Download
                     </p>
-                    <div className="text-[16px] font-[600]">
-                      <p>Commercial</p>
-                    </div>
                   </div>
                 </div>
-                {/* Closing Date */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={calender} alt="calendar" />
+                <div className="h-[82px] bg-[#191C1C] radius-[8px] flex justify-between px-[16px] py-[20px] ">
+                  <div className="flex items-center gap-2">
+                    <Image src={documentIcon} alt="document" />
+                    <p className="text-[16px] text-white font-[500]">
+                      Investor Packet
+                    </p>
                   </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">Closing Date</p>
-                    <div className="text-[16px] font-[600]">
-                      <p>February 3rd, 2028</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Image src={downloadIcon} alt="download" />
+                    <p className="text-[16px] font-[500] text-[#26CE92]">
+                      Download
+                    </p>
                   </div>
                 </div>
-                {/* Launch Date */}
-                <div className="flex gap-[5px]">
-                  <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
-                    <Image src={calender} alt="calendar" />
+                <div className="h-[82px] flex bg-[#191C1C] radius-[8px] justify-between px-[16px] py-[20px] ">
+                  <div className="flex items-center gap-2">
+                    <Image src={documentIcon} alt="document" />
+                    <p className="text-[16px] text-white font-[500]">
+                      Q1 2025 Asset Management Report
+                    </p>
                   </div>
-                  <div className="font-manrope font-[500]">
-                    <p className="text-[14px] text-white/[60%]">Launch Date</p>
-                    <div className="text-[16px] font-[600]">
-                      <p>January 3rd. 2025</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Image src={downloadIcon} alt="download" />
+                    <p className="text-[16px] font-[500] text-[#26CE92]">
+                      Download
+                    </p>
                   </div>
                 </div>
               </div>
@@ -342,6 +426,34 @@ export default function Page() {
           <button className="bg-[#D4FAFE] mt-[21px] font-carbonic  rounded-[6px]  w-full text-[18px] px-4 border  text-[#116158] py-2">
             Invest
           </button>
+        </div>
+      </div>
+
+      <div className="flex flex-col  mt-[50px] sm:mt-[250px] items-center">
+        <Image src={box} alt="box" />
+        <p className="mt-[30px] font-[16px]">Hertex Holdings</p>
+
+        <p className="text-[12px] text-white/60 mt-[20px]">
+          1234 Blockchain Ave, Suite 100, San Francisco, CA 94107
+        </p>
+      </div>
+
+      <div className="mt-[76px] w-full px-[40px] flex flex-col items-start">
+        <p className="text-[20px] mb-[40px] font-carbonic text-white/80">
+          Other listing by Hertex Holdings
+        </p>
+        <div className="grid grid-col-2 w-full gap-x-[36px] gap-y-[72px] mt-[55px] sm:grid-col-2 lg:grid-cols-4">
+          {propertiesData.slice(0, 4).map((property, index) => (
+            <PropertiesCell
+              key={index}
+              title={property.title}
+              returns={property.returns}
+              units={property.units}
+              address={property.address}
+              price={property.price}
+              images={property.images}
+            />
+          ))}
         </div>
       </div>
     </div>

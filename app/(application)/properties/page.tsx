@@ -16,13 +16,33 @@ export default function Page() {
     useListings();
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [tab, setTab] = useState<"trust" | "prop">("prop");
   const router = useRouter();
 
   return (
     <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[36px]">
-      <div className="flex justify-between  mb-[40px]">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="w-fit h-[44px] flex items-center rounded-[8px] bg-white/[8%]">
+      <div className="py-[7px] px-[10px] bg-[#171A1A] rounded-[200px] mx-auto w-fit flex gap-4 mb-[50px] items-center text-[16px] text-[#B9B9B9CC]/[80%] font-[600] font-manrope text-white">
+        <div
+          onClick={() => setTab("prop")}
+          className={`${
+            tab === "prop" && "bg-[#D4FAFE] text-black rounded-[200px] "
+          } px-[20px] py-[10px] cursor-pointer transition-transform ease-in-out duration-1000`}
+        >
+          PROPERTIES
+        </div>
+        <div
+          onClick={() => setTab("trust")}
+          className={`${
+            tab === "trust" && "bg-[#D4FAFE] text-black rounded-[200px] "
+          } px-[20px] py-[10px] cursor-pointer transition-transform ease-in-out duration-1000`}
+        >
+          INVESTMENT TRUST
+        </div>
+      </div>
+
+      <div className="flex justify-center w-full  mb-[40px]">
+        <div className="flex flex-col items-center justify-center sm:flex-row gap-4">
+          <div className="w-full sm:w-fit h-[44px] flex items-center rounded-[8px] bg-white/[8%]">
             <select
               defaultValue={"Luxury Condo"}
               className="h-[40px] text-[12px] sm:text-[14px] outline-none bg-transparent w-full px-4 text-white placeholder-white/60 appearance-none"
@@ -49,7 +69,7 @@ export default function Page() {
               alt="Dropdown Icon"
             />
           </div>
-          <div className="w-fit flex items-center rounded-[8px] bg-white/[8%]">
+          <div className="w-full sm:w-fit flex items-center rounded-[8px] bg-white/[8%]">
             <select className="h-[40px] text-[12px] sm:text-[14px] outline-none bg-transparent w-full px-4 text-white placeholder-white/60 appearance-none">
               <option value="" disabled className="text-gray-500">
                 Expected ROI
@@ -67,7 +87,7 @@ export default function Page() {
               alt="Dropdown Icon"
             />
           </div>
-          <div className="w-fit flex items-center rounded-[8px] bg-white/[8%]">
+          <div className="w-full sm:w-fit flex items-center rounded-[8px] bg-white/[8%]">
             <select className="h-[40px] text-[12px] sm:text-[14px] outline-none bg-transparent w-full px-4 text-white placeholder-white/60 appearance-none">
               <option value="" disabled className="text-gray-500">
                 Investment Duration
@@ -85,14 +105,14 @@ export default function Page() {
               alt="Dropdown Icon"
             />
           </div>
-        </div>
-        <div className="w-fit h-[44px] px-4 justify-center gap-2 flex items-center rounded-[8px] bg-white/[8%]">
-          <p>Filter</p>
-          <Image
-            className="w-[20px] h-[20px]  cursor-pointer"
-            src={filterIcon}
-            alt="filter Icon"
-          />
+          <div className="w-full sm:w-fit h-[44px] text-[12px] sm:text-[14px]  px-4 justify-between gap-2 flex items-center rounded-[8px] bg-white/[8%]">
+            <p className="text-white">Filter</p>
+            <Image
+              className="w-[20px] h-[20px]  cursor-pointer"
+              src={filterIcon}
+              alt="filter Icon"
+            />
+          </div>
         </div>
       </div>
       <div className="w-full h-fit lg:h-[398px] flex-col lg:flex-row bg-white/[9%] gap-[20px] border border-white-[3%] rounded-[16px] flex lg:pr-[30px]">
@@ -245,8 +265,8 @@ export default function Page() {
         <p className="text-center text-[20px] text-white">
           Continue exploring new investments
         </p>
-        <button className="bg-[#D4FAFE]   w-[198px] px-4 mt-8 border  text-[#063D37] py-2">
-          Explore
+        <button className="bg-[#D4FAFE] text-[500] font-carbonic w-[198px] px-4 mt-8 border  text-[#063D37] py-2">
+          Show more
         </button>
       </div>
     </div>

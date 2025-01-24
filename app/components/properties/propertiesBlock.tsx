@@ -14,7 +14,7 @@ const PropertiesCell = (props: {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
-    <Link href={"/properties/1"} className="w-full">
+    <Link href={"/properties/1"} className="w-full font-manrope">
       <div className="relative group">
         {/* Image container */}
         <div className="relative w-full aspect-video">
@@ -94,12 +94,14 @@ const PropertiesCell = (props: {
       </div>
 
       {/* Property details */}
-      <p className="font-bold text-base mt-6 mb-3 text-white">{props.title}</p>
-      <p className="text-white/70 text-xs">
+      <p className=" font-manrope font-[700] text-base mt-6 mb-3 text-white">
+        {props.title}
+      </p>
+      <p className="text-white/70 text-xs ">
         {props.returns}%{" "}
         <span className="text-white/30">~ returns in 12 months</span>
       </p>
-      <div className="w-full text-sm mt-4 text-white flex justify-between">
+      <div className="w-full text-sm mt-4 font-[600] text-white flex justify-between">
         <div className="flex items-center gap-2">
           <Image src={btc} alt="btc" />
           <p>{props.price}</p>

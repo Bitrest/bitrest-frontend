@@ -11,13 +11,20 @@ import { useState } from "react";
 import { useListings } from "@/app/_hooks/listing/useListings";
 import PropertiesCell from "@/app/components/properties/propertiesBlock";
 import { useRouter } from "next/navigation";
+import Loader from "@/app/components/loaders/loader";
 export default function Page() {
   const { listingLoading, mutateListings, error, listings, page } =
     useListings();
 
+  // Show loading skeleton while fetching data
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [tab, setTab] = useState<"trust" | "prop">("prop");
   const router = useRouter();
+
+  if (listingLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[36px]">
@@ -248,15 +255,15 @@ export default function Page() {
 
       {/* Properties */}
       <div className="grid grid-col-1 gap-x-[36px] gap-y-[72px] mt-[55px] sm:grid-col-2 lg:grid-cols-4">
-        {propertiesData.map((property, index) => (
+        {listings?.map((property, index) => (
           <PropertiesCell
             key={index}
             title={property.title}
-            returns={property.returns}
-            units={property.units}
-            address={property.address}
-            price={property.price}
-            images={property.images}
+            returns={property.returnPotential.toString()}
+            units={property.totalSupply.toString()}
+            address={property.propertyLocation.toString()}
+            price={property.price.toString()}
+            images={property?.images}
           />
         ))}
       </div>

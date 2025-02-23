@@ -1,14 +1,28 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Listing {
-  category: string;
   _id: string;
+  listingId: string;
   title: string;
   description: string;
   price: number;
-  delegatedId: string;
+  delegateId: string;
+  category: string;
+  status?: string;
   networkName: string;
   totalSupply: number;
+  documents?: string[];
   reserve: number;
-  mintCount: number;
+  mainCount: number;
+  priorityStageIds?: any[];
+  roi: number;
+  returnPotential: number;
+  duration: number;
+  propertyType: string;
+  launchDate: string;
+  closeDate: string;
+  partners: string[];
+  propertyLocation: string;
+  images: string[];
   createdBy: string;
   createdAt: string;
   updatedAt: string;

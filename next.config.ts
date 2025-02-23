@@ -16,6 +16,14 @@ const nextConfig = {
         port: "",
       },
       {
+        protocol: "https",
+        hostname: "ipfs.io",
+      },
+      {
+        protocol: "http",
+        hostname: "ipfs.io",
+      },
+      {
         protocol: "http",
         hostname: "**.cloudinary.com",
         port: "",

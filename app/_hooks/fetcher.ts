@@ -9,6 +9,5 @@ export const fetcher = async (
   const response: AxiosResponse = await axiosClient.get(
     `${baseURL}${queryParams}`
   );
-  console.log(response);
-  return response.data;
+  return response.data.data;
 };

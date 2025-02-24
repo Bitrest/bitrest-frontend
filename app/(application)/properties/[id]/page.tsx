@@ -20,6 +20,7 @@ import documentIcon from "@/public/icons/Document Icon.svg";
 import downloadIcon from "@/public/icons/Download Icon.svg";
 import box from "@/public/icons/box cube.svg";
 import PropertiesCell from "@/app/components/properties/propertiesBlock";
+import Loader from "@/app/components/loaders/loader";
 export default function Page() {
   const params = useParams<{ id: string }>();
 
@@ -27,6 +28,14 @@ export default function Page() {
     useSingleListing({ id: params.id });
 
   const [activeTab, setActiveTab] = useState("essential");
+
+  const placeholderImage =
+    "https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-autumn-camping.png";
+
+  const getImageSrc = (index: number, image: string | undefined) => {
+    const src = image;
+    return src && src.trim() !== "" ? src : placeholderImage;
+  };
 
   // Tabs data
   const tabs = [
@@ -37,6 +46,10 @@ export default function Page() {
   ];
   const sliderRef = useRef<any>(null);
   const router = useRouter();
+
+  if (singleListingLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="bg-[#101313] flex flex-col items-center min-h-screen pt-[50px] pb-[100px] w-full">
@@ -54,13 +67,13 @@ export default function Page() {
               msOverflowStyle: "none",
             }}
           >
-            {propertiesData[0].images.map((image, index) => (
+            {listing.images.map((image, index) => (
               <div
                 key={index}
                 className="relative w-[90%] rounded-[16px]  h-[400px] flex-shrink-0 snap-center"
               >
                 <Image
-                  src={image}
+                  src={getImageSrc(index, image)}
                   alt={`Property image ${index + 1}`}
                   fill
                   className="object-cover rounded-[16px] "
@@ -72,7 +85,7 @@ export default function Page() {
 
           {/* Image Indicators */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {propertiesData[0].images.map((_, index) => (
+            {listing.images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
@@ -90,12 +103,10 @@ export default function Page() {
 
       <div className="flex w-full flex-col lg:flex-row items-start gap-8 justify-between mt-[82px] px-[40px]">
         <div className="w-full">
-          <p className="text-[24px] text-white">
-            Scenic Countryside Homes in Lagos
-          </p>
+          <p className="text-[24px] text-white">{listing.title}</p>
           <div className="flex gap-2 text-white/[60%]  text-[16px] mt-[26px] items-center">
             <Image src={map} alt="map" />
-            <p className="">Lagos, Nigeria</p>
+            <p className="">{listing.propertyLocation}</p>
           </div>
 
           <div className="flex mt-[150px] gap-8 border-b border-white/20">
@@ -216,7 +227,7 @@ export default function Page() {
                       <div className="text-[16px] flex font-[600]">
                         <div className="flex items-center">
                           <Image src={btc} alt="btc" />
-                          0.01847{" "}
+                          {listing?.reserve}
                           <span className="font-[500] text-white/[60%]">
                             ($1813.30)
                           </span>
@@ -234,7 +245,7 @@ export default function Page() {
                         Expected ROI
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>23.5%</p>
+                        <p>{listing?.roi}%</p>
                       </div>
                     </div>
                   </div>
@@ -248,7 +259,7 @@ export default function Page() {
                         Total Return Potential
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>3.5x</p>
+                        <p>{listing?.returnPotential}x</p>
                       </div>
                     </div>
                   </div>
@@ -262,7 +273,7 @@ export default function Page() {
                         Investment Duration
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>12 Months</p>
+                        <p>{listing?.duration} days</p>
                       </div>
                     </div>
                   </div>
@@ -276,7 +287,7 @@ export default function Page() {
                         Property Type
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>Commercial</p>
+                        <p>{listing.propertyType}</p>
                       </div>
                     </div>
                   </div>
@@ -290,7 +301,14 @@ export default function Page() {
                         Closing Date
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>February 3rd, 2028</p>
+                        <p>
+                          {" "}
+                          {listing?.closeDate
+                            ? new Intl.DateTimeFormat("en-US", {
+                                dateStyle: "long",
+                              }).format(new Date(listing.closeDate))
+                            : "N/A"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -304,7 +322,13 @@ export default function Page() {
                         Launch Date
                       </p>
                       <div className="text-[16px] font-[600]">
-                        <p>January 3rd. 2025</p>
+                        <p>
+                          {listing?.launchDate
+                            ? new Intl.DateTimeFormat("en-US", {
+                                dateStyle: "long",
+                              }).format(new Date(listing.launchDate))
+                            : "N/A"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -313,14 +337,7 @@ export default function Page() {
                 <div className="mt-[60px]">
                   <p className="font-[500] text-[24px]">Description</p>
                   <p className="font-manrope text-[16px] leading-[37px] text-white/60">
-                    Scenic Countryside Homes offers a unique opportunity to
-                    invest in a beautifully designed mixed-use property set in a
-                    serene countryside location. This development combines the
-                    charm of nature with the modern conveniences of urban
-                    living, promising not just a property, but an experience.
-                    With an emphasis on eco-friendly design and sustainable
-                    construction, this project presents an ideal investment for
-                    those seeking long-term growth in the real estate sector.
+                    {listing?.description}
                   </p>
                 </div>
               </div>
@@ -439,6 +456,7 @@ export default function Page() {
           {propertiesData.slice(0, 4).map((property, index) => (
             <PropertiesCell
               key={index}
+              id={index.toString()}
               title={property.title}
               returns={property.returns}
               units={property.units}

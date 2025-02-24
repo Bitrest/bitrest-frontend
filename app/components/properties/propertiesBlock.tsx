@@ -10,16 +10,25 @@ const PropertiesCell = (props: {
   address: string;
   price: string;
   images: string[];
+  id: string;
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const placeholderImage =
+    "https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-autumn-camping.png";
+
+  const getImageSrc = (index: number) => {
+    const src = props.images[index];
+    return src && src.trim() !== "" ? src : placeholderImage;
+  };
+
   return (
-    <Link href={"/properties/1"} className="w-full font-manrope">
+    <Link href={`/properties/${props.id}`} className="w-full font-manrope">
       <div className="relative group">
         {/* Image container */}
         <div className="relative w-full aspect-video">
           <Image
-            src={props.images[currentImageIndex]}
+            src={getImageSrc(currentImageIndex)}
             alt={`${props.title} - Image ${currentImageIndex + 1}`}
             className="object-cover rounded-lg"
             fill

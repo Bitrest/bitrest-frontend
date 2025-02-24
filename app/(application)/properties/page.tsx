@@ -258,6 +258,7 @@ export default function Page() {
         {listings?.map((property, index) => (
           <PropertiesCell
             key={index}
+            id={property._id}
             title={property.title}
             returns={property.returnPotential.toString()}
             units={property.totalSupply.toString()}

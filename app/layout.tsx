@@ -119,7 +119,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${carbonic.variable} ${manrope.variable} ${outfit.variable}  bg-custom-gradient font-carbonic antialiased min-h-screen overflow-x-hidden`}
+        className={`${carbonic.variable} ${manrope.variable} ${outfit.variable}  bg-black font-carbonic antialiased min-h-screen overflow-x-hidden`}
       >
         <UserContextProvider>
           <ToastProvider>{children}</ToastProvider>

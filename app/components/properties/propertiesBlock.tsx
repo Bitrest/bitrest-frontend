@@ -23,7 +23,10 @@ const PropertiesCell = (props: {
   };
 
   return (
-    <Link href={`/properties/${props.id}`} className="w-full font-manrope">
+    <Link
+      href={`/properties/${props.id}`}
+      className="w-full px-[24px] py-[24px] font-manrope"
+    >
       <div className="relative group">
         {/* Image container */}
         <div className="relative w-full aspect-video">

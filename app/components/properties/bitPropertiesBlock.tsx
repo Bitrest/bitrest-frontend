@@ -4,6 +4,8 @@ import bed from "@/public/icons/bed.svg";
 import safe from "@/public/icons/safe.svg";
 import dimensions from "@/public/icons/dimension.svg";
 import bath from "@/public/icons/bath.svg";
+import lock from "@/public/icons/lock.svg";
+
 import money from "@/public/icons/money.svg";
 import { useRouter } from "next/navigation";
 
@@ -33,13 +35,6 @@ const PropertiesBlock = (props: {
 
   return (
     <div
-      onClick={() => {
-        if (props.active) {
-          router.replace("/signup");
-        } else {
-          alert("Property not available yet");
-        }
-      }}
       // href={`/properties/${props.id}`}
       className="w-full px-[24px] py-[24px] font-manrope"
     >
@@ -157,7 +152,21 @@ const PropertiesBlock = (props: {
           <Image src={money} alt="money" /> {props.value}{" "}
           <span className="text-white/30">(${props.price})</span>
         </p>
-        <div className="rounded-[12px] w-fit py-[10px] font-bold px-[16px]  text-[8px] flex items-center justify-center text-black bg-[#D4FAFE]  hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all">
+        <div
+          onClick={() => {
+            if (props.active) {
+              router.replace("/signup");
+            } else {
+              alert("Property not available yet");
+            }
+          }}
+          className={`rounded-[12px] gap-[5px] w-fit py-[10px] font-bold px-[16px]  text-[8px] flex items-center justify-center ${
+            props.active
+              ? "text-black  bg-[#D4FAFE]"
+              : "bg-[#1E2020] text-white/[52%]"
+          }   hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all`}
+        >
+          {!props.active && <Image src={lock} alt="lock" />}
           Buy Now
         </div>
       </div>

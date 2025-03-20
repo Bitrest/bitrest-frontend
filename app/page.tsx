@@ -7,22 +7,18 @@ import security from "@/public/images/security copy.svg";
 import liquidate from "@/public/images/liquidate.svg";
 import twitter from "@/public/images/twitter_x.svg";
 import linkedIn from "@/public/images/linkedin.svg";
-
 import logo from "@/public/images/Bitrest logo.svg";
-import { propertiesData } from "./constants";
-import PropertiesCell from "./components/properties/propertiesBlock";
-import windowSill from "@/public/images/bitrest_hero.png";
-
+import { availableProperties } from "./constants";
+import bitCard from "@/public/images/bitrest_card_image.png";
+import PropertiesBlock from "./components/properties/bitPropertiesBlock";
 export default function Home() {
   return (
     <div className="w-screen overflow-x-hidden bg-black text-white relative items-center justify-items-center min-h-screen  font-carbonic">
-      {/* Header is positioned normally at the top */}
-
-      {/*Hero Section - positioned below the header */}
+      {/*The Property Section*/}
       <div className="relative w-screen h-[500px] md:h-[1000px] ">
         <Header />
         <Image
-          className="absolute inset-0 w-full h-full object-cover"
+          className="hidden sm:absolute sm:block inset-0 w-full h-full object-cover"
           src="/images/bitrest_hero.png"
           alt="hero"
           width={1512}
@@ -48,7 +44,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* About Us Section */}
+      {/* Your BTC Section */}
       <div className="w-full px-[40px] bg-black lg:px-[120px] flex py-[108px]   items-center flex-col">
         <p className="text-center text-[30px] lg:text-[45px]">
           Your BTC, your future – fund property &<br /> residency investments
@@ -59,9 +55,9 @@ export default function Home() {
           utilizing their Bitcoin for real estate and residency or citizenship
           programs in the UK and Dubai—without selling their BTC.
         </p>
-        <div className="grid sm:grid-cols-3 grid-cols-1 gap-[11px] w-full">
-          {propertiesData.slice(0, 3).map((property, index) => (
-            <PropertiesCell
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-[8px] w-full">
+          {availableProperties.slice(0, 3).map((property, index) => (
+            <PropertiesBlock
               key={index}
               title={property.title}
               returns={property.returns}
@@ -69,13 +65,18 @@ export default function Home() {
               address={property.address}
               price={property.price}
               images={property.images}
+              bath={property.bath}
+              bed={property.bed}
+              value={property.value}
+              dimensions={property.dimensions}
               id={index.toString()}
+              active={property.active}
             />
           ))}
         </div>
       </div>
 
-      {/* Products Sections */}
+      {/* How BitRest Works Section */}
 
       <div className="w-full flex  relative border-dashed px-[40px] py-[100px]  items-start flex-col">
         <p className="text-left text-[30px] lg:text-[45px] mb-[24px]">
@@ -165,16 +166,17 @@ export default function Home() {
           </div>
 
           {/* Image column */}
-          <div className="relative h-full min-h-[500px] lg:min-h-full">
+          <div className="hidden lg:relative lg:block  h-full min-h-[500px] lg:min-h-full">
             <Image
-              alt="window sill"
-              src={windowSill}
+              alt="Bit card"
+              src={bitCard}
               fill
               className="object-cover rounded-b-[34px] lg:rounded-r-[34px] lg:rounded-bl-none"
             />
           </div>
         </div>
       </div>
+
       {/* Why Bitrest Section */}
       <div className="w-full mt-[170px] z-40 px-[40px]">
         <p className="text-left text-[30px] lg:text-[45px] mb-[24px]">
@@ -250,7 +252,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bannet Image */}
+        {/* Banner Image */}
 
         <div className="relative w-full mt-[170px] rounded-[28px] h-[450px]">
           <Image

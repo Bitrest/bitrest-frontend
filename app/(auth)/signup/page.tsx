@@ -101,18 +101,6 @@ export default function Page() {
               </Link>{" "}
             </p>
 
-            {/* Auth Buttons */}
-            <div className="w-full flex gap-[20px]">
-              <button className="border-[#D4FAFE1A] flex justify-center items-center gap-[10px] rounded-[10px] text-[#D4FAFE] bg-white/[8%] w-full px-4 mt-8 border  py-2">
-                Sign Up With Google
-                <Image src={google} alt="google icon" />
-              </button>
-              <button className="border-[#D4FAFE1A] flex gap-[10px] justify-center items-center rounded-[10px] text-[#D4FAFE] bg-white/[8%] w-full px-4 mt-8 border  py-2">
-                Sign Up With Apple
-                <Image src={apple} alt="apple icon" />
-              </button>
-            </div>
-
             <div className="flex w-full my-[32px] items-center">
               <hr className="flex-grow h-[1px] bg-white/[22%]" />
               <p className="px-4 text-white/[22%]">or</p>

@@ -57,3 +57,59 @@ export const propertiesData = [
   },
   // Add similar data for other properties
 ];
+
+export const availableProperties = [
+  {
+    title: "DAMAC Towers by Paramount Hotels & Resorts",
+    returns: "20",
+    active: true,
+    units: "3",
+    address: "Business Bay, Dubai, UAE",
+    bed: "3",
+    bath: "3",
+    price: "10.81 BTC",
+    value: "912,147.90 ",
+    dimensions: "1,743 sq. ft.",
+    images: [
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+    ],
+  },
+
+  {
+    title: "Thames Horizon Apartment",
+    returns: "20",
+    active: false,
+    units: "3",
+    address: "Knightsbridge, London",
+    bed: "2",
+    bath: "2",
+    price: "10.81 BTC",
+    value: "$500,000",
+    dimensions: "1,743 sq. ft.",
+    images: [
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+    ],
+  },
+
+  {
+    title: "The Royal Crest Residence",
+    returns: "20",
+    active: false,
+    units: "3",
+    address: "Knightsbridge, London",
+    bed: "3",
+    bath: "3",
+    price: "56.28 BTC",
+    value: "$4,750,000",
+    dimensions: "1,743 sq. ft.",
+    images: [
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+      "/images/sky scrpaer.png",
+    ],
+  },
+];

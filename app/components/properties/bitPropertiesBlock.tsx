@@ -1,18 +1,28 @@
 import Image from "next/image";
 import { useState } from "react";
-import btc from "@/public/icons/color btc.svg";
+import bed from "@/public/icons/bed.svg";
+import safe from "@/public/icons/safe.svg";
+import dimensions from "@/public/icons/dimension.svg";
+import bath from "@/public/icons/bath.svg";
+import money from "@/public/icons/money.svg";
+import { useRouter } from "next/navigation";
 
-const PropertiesCell = (props: {
+const PropertiesBlock = (props: {
   title: string;
   returns: string;
   units: string;
   address: string;
   price: string;
+  bath: string;
+  bed: string;
+  value: string;
   images: string[];
   id: string;
+  dimensions: string;
+  active: boolean;
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const router = useRouter();
   const placeholderImage =
     "https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-autumn-camping.png";
 
@@ -23,6 +33,13 @@ const PropertiesCell = (props: {
 
   return (
     <div
+      onClick={() => {
+        if (props.active) {
+          router.replace("/signup");
+        } else {
+          alert("Property not available yet");
+        }
+      }}
       // href={`/properties/${props.id}`}
       className="w-full px-[24px] py-[24px] font-manrope"
     >
@@ -35,6 +52,9 @@ const PropertiesCell = (props: {
             className="object-cover rounded-lg"
             fill
           />
+        </div>
+        <div className="absolute top-[18px] font-[700] bg-custom-gray-gradient text-white text-[12px] px-[8px] py-[5px] rounded-[130px] border-[0.67px] border-white/[20%] right-[10px]">
+          <p>{props.active ? "ACTIVE" : "COMING SOON"}</p>
         </div>
 
         {/* Image navigation dots */}
@@ -105,23 +125,44 @@ const PropertiesCell = (props: {
       </div>
 
       {/* Property details */}
-      <p className=" font-manrope font-[700] text-base mt-6 mb-3 text-white">
+      <p className=" font-manrope mb-[16px] font-[700] text-[16px]  mt-6  text-white">
         {props.title}
       </p>
-      <p className="text-white/70 text-xs ">
-        {props.returns}%{" "}
-        <span className="text-white/30">~ returns in 12 months</span>
-      </p>
-      <div className="w-full text-sm mt-4 font-[600] text-white flex justify-between">
-        <div className="flex items-center gap-2">
-          <Image src={btc} alt="btc" />
-          <p>{props.price}</p>
+      <div className="text-[10.5px] items-center justify-between flex w-full gap-[8px]">
+        <p className="text-white/[50%] text-nowrap">{props.address}</p>
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
+
+        <div className="flex justify-between items-center gap-[4px]">
+          <Image src={safe} alt="safe" />
+          <p className="text-white/[50%] text-nowrap">{props.returns} %</p>
         </div>
-        <p>{props.units} Units</p>
-        <p>{props.address}</p>
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
+        <div className="flex items-center gap-[4px]">
+          <Image src={bed} alt="bed" />
+          <p className="text-white/[50%] text-nowrap">{props.bed} Bed</p>
+        </div>
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
+        <div className="flex items-center gap-[4px]">
+          <Image src={bath} alt="bath" />
+          <p className="text-white/[50%] text-nowrap">{props.bath} Bath</p>
+        </div>
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
+        <div className="flex items-center gap-[4px]">
+          <Image src={dimensions} alt="dimension" />
+          <p className="text-white/[50%] text-nowrap">{props.dimensions}</p>
+        </div>
+      </div>
+      <div className="w-full flex flex-row items-end  justify-between">
+        <p className="text-white mt-[30px] text-nowrap flex font-[600] gap-[10px] text-[14px]">
+          <Image src={money} alt="money" /> {props.value}{" "}
+          <span className="text-white/30">(${props.price})</span>
+        </p>
+        <div className="rounded-[12px] w-fit py-[10px] font-bold px-[16px]  text-[8px] flex items-center justify-center text-black bg-[#D4FAFE]  hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all">
+          Buy Now
+        </div>
       </div>
     </div>
   );
 };
 
-export default PropertiesCell;
+export default PropertiesBlock;

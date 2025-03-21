@@ -11,7 +11,12 @@ import logo from "@/public/images/Bitrest logo.svg";
 import { availableProperties } from "./constants";
 import bitCard from "@/public/images/bitrest_card_image.png";
 import PropertiesBlock from "./components/properties/bitPropertiesBlock";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 export default function Home() {
+  const [email, setEmail] = useState<string>();
+
+  const router = useRouter();
   return (
     <div className="w-screen overflow-x-hidden bg-black text-white relative items-center justify-items-center min-h-screen  font-carbonic">
       {/*The Property Section*/}
@@ -26,19 +31,27 @@ export default function Home() {
           quality={100}
         />
         <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-12 lg:px-20 max-w-6xl pt-[100px]">
-          <p className=" text-[24px] md:text-[50px] font-bold mb-[6px] md:mb-[6px] z-10">
-            Leverage your bitcoin for real estate & residency investments
+          <p className=" text-[24px] md:text-[60px] leading-tight font-[500] mb-[6px] md:mb-[6px] z-10">
+            Leverage your bitcoin for <br /> real estate & residency <br />{" "}
+            investments
           </p>
-          <p className="text-[12px] lg:text-[20px] text-white/[55%] z-10 max-w-3xl">
+          <p className="text-[12px] font-aeonik md:text-[20px] text-white/[55%] z-10 max-w-3xl">
             Unlock property ownership & citizenship opportunities in the UK &
             Dubai without selling your BTC
           </p>
-          <div className="w-full flex mt-[40px] flex-row px-[10px] lg:w-[547px] py-[10px] items-center justify-between bg-[#202123] h-[48px] lg:h-[68px] rounded-[14px] border-white border-[1px]/[11%]">
-            <p className="lg:text-[16px] text-[10px] text-white/[60%]">
-              Enter your email address
-            </p>
-            <button className="border  rounded-[16px] text-[8px] lg:text-[17px] cursor-pointer text-black bg-[#D4FAFE] px-4 py-2 hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all">
-              Get Early Access
+          <div className="w-full flex mt-[40px] relative flex-row px-[10px] md:w-[547px] py-[10px] items-center justify-between bg-[#202123] h-[48px] md:h-[68px] rounded-[14px] border-white border-[1px]/[11%]">
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              className="bg-transparent absolute outline-none left-[10px] w-full placeholder:font-aeonik placeholder:text-[10px] placeholder:text-white/[60%]"
+              placeholder="Enter your email address"
+            />
+
+            <button
+              onClick={() => router.replace(`/signup?email=${email}`)}
+              className="rounded-[8px] absolute right-[10px] text-[8px] md:text-[17px] cursor-pointer text-black bg-[#D4FAFE] px-4 py-2 hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all"
+            >
+              Join Us
             </button>
           </div>
         </div>
@@ -50,7 +63,7 @@ export default function Home() {
           Your BTC, your future – fund property &<br /> residency investments
           with ease
         </p>
-        <p className="text-center w-[90%] mb-[113px] text-white/[55%] sm:w-[50%] flex justify-center items-center text-[10px] lg:text-[16px]">
+        <p className="text-center w-[90%] font-aeonik mb-[113px] text-white/[55%] sm:w-[50%] flex justify-center items-center text-[10px] md:text-[16px]">
           At Bitrest, we assist high-net-worth individuals and investors in
           utilizing their Bitcoin for real estate and residency or citizenship
           programs in the UK and Dubai—without selling their BTC.
@@ -186,66 +199,66 @@ export default function Home() {
           Tailored BTC-Backed Financing for High-Value Assets{" "}
         </p>
         <div className="w-full  grid grid-cols-1 sm:grid-cols-2 items-end gap-[40px]">
-          <div className="bg-[#0D0E0E] items-start flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px]  lg:h-[370px]">
+          <div className="bg-[#0D0E0E] items-start flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px]  md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] lg:h-[65px] lg:w-[65px]"
+              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
               src={globe}
               alt="globe"
             />
             <div className="space-y-[14px]">
-              <p className="text-[18px] lg:text-[24px] text-white font-carbonic">
+              <p className="text-[18px] md:text-[24px] text-white font-carbonic">
                 Specialized in UK & Dubai Markets
               </p>
-              <p className="text-[14px] lg:text-[20px] text-white/[50%]">
+              <p className="text-[14px] font-aeonik md:text-[20px] text-white/[50%]">
                 Gain access to prime real estate and top-tier investor visa
                 programs.{" "}
               </p>
             </div>
           </div>
 
-          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] lg:h-[370px]">
+          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] lg:h-[65px] lg:w-[65px]"
+              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
               src={handshake}
               alt="handshake"
             />
             <div className="space-y-[14px]">
-              <p className="text-[18px] lg:text-[24px] text-white font-carbonic">
+              <p className="text-[18px]  md:text-[24px] text-white font-carbonic">
                 Exclusive Investment Opportunities{" "}
               </p>
-              <p className="text-[14px] lg:text-[20px] text-white/[50%]">
+              <p className="text-[14px] font-aeonik md:text-[20px] text-white/[50%]">
                 Partnering with leading developers and immigration experts.
               </p>
             </div>
           </div>
 
-          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] lg:h-[370px]">
+          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] lg:h-[65px] lg:w-[65px]"
+              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
               src={liquidate}
               alt="liquidate"
             />
             <div className="space-y-[14px]">
-              <p className="text-[18px] lg:text-[24px] text-white font-carbonic">
+              <p className="text-[18px] md:text-[24px] text-white font-carbonic">
                 No Need to Liquidate BTC
               </p>
-              <p className="text-[14px] lg:text-[20px] text-white/[50%]">
+              <p className="text-[14px] md:text-[20px] font-aeonik text-white/[50%]">
                 Use structed financing to keep your crypto exposure
               </p>
             </div>
           </div>
 
-          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] lg:h-[370px]">
+          <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] lg:h-[65px] lg:w-[65px]"
+              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
               src={security}
               alt="security"
             />
             <div className="space-y-[14px]">
-              <p className="text-[18px] lg:text-[24px] text-white font-carbonic">
+              <p className="text-[18px] md:text-[24px] text-white font-carbonic">
                 Regulated & Secure{" "}
               </p>
-              <p className="text-[14px] lg:text-[20px] text-white/[50%]">
+              <p className="text-[14px] font-aeonik md:text-[20px] text-white/[50%]">
                 Institutional-grade asset protection for peace of mind{" "}
               </p>
             </div>
@@ -265,10 +278,11 @@ export default function Home() {
           />
           <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-12 lg:px-20">
             <div className="max-w-xl">
-              <p className="text-[20px] md:text-[40px] font-bold mb-[32px] z-10">
-                Explore investment-backed residency & real estate programs
+              <p className="text-[20px] font-aeonik md:text-[40px] font-[500] mb-[32px] z-10">
+                Explore investment-backed <br /> residency & real estate
+                programs
               </p>
-              <button className="border rounded-[16px] text-[8px] md:text-[14px] lg:text-[17px] cursor-pointer text-black bg-white px-4 py-2 hover:bg-gray-100 transition-all w-fit">
+              <button className="font-aeonik rounded-[8px] text-[8px] md:text-[14px] lg:text-[17px] cursor-pointer text-black bg-white px-4 py-2 hover:bg-gray-100 transition-all w-fit">
                 Request a consultation
               </button>
             </div>

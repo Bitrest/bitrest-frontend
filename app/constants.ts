@@ -89,9 +89,9 @@ export const availableProperties = [
     value: "$500,000",
     dimensions: "1,743 sq. ft.",
     images: [
-      "/images/sky scrpaer.png",
-      "/images/sky scrpaer.png",
-      "/images/sky scrpaer.png",
+      "/images/duplex new.png",
+      "/images/duplex new.png",
+      "/images/duplex new.png",
     ],
   },
 
@@ -107,9 +107,9 @@ export const availableProperties = [
     value: "$4,750,000",
     dimensions: "1,743 sq. ft.",
     images: [
-      "/images/sky scrpaer.png",
-      "/images/sky scrpaer.png",
-      "/images/sky scrpaer.png",
+      "/images/luxury house.png",
+      "/images/luxury house.png",
+      "/images/luxury house.png",
     ],
   },
 ];

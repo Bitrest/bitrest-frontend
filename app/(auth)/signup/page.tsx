@@ -8,7 +8,7 @@ import google from "@/public/icons/google.svg";
 import apple from "@/public/icons/apple.svg";
 import * as yup from "yup";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthHook } from "@/app/_hooks/auth/auth.hook";
@@ -34,6 +34,8 @@ export type FormValues = yup.InferType<typeof schema>;
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
 
   const {
     register,
@@ -43,6 +45,9 @@ export default function Page() {
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
     mode: "all",
+    defaultValues: {
+      email: email || "",
+    },
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -69,13 +74,7 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full bg-[#063D37] text-white relative items-center justify-items-center min-h-screen overflow-hidden font-carbonic">
-      <Image
-        className="absolute bottom-0 left-0 z-10"
-        src={estate}
-        alt="hero"
-      />
-
+    <div className="w-full bg-black/[60%] text-white relative items-center justify-items-center min-h-screen overflow-hidden font-carbonic">
       <div className="h-full px-[40px] w-full items-start py-[80px] grid grid-cols-1 gap-[50px] space-y-8 lg:space-y-0 lg:grid-cols-2">
         <div className="col-span-1">
           <Link href={"/"}>
@@ -92,18 +91,18 @@ export default function Page() {
           </p>
         </div>
         <div className="col-span-1  flex justify-center ">
-          <div className="h-fit bg-[#10352F] w-[578px]  py-8 px-8 z-10 border border-[#5BC6A3]">
+          <div className="h-fit bg-[#0D0E0E] w-[578px]  py-8 px-8 z-10 border border-custom-yellow-gradient">
             <p className="text-[30px] text-center">Create Account</p>
             <p className="text-[16px] text-white/60 text-center mt-[7px]">
               Already have an account?{" "}
-              <Link href={"/signin"} className="text-[#5BC6A3]">
+              <Link href={"/signin"} className="text-[#FF9E81]">
                 Log in
               </Link>{" "}
             </p>
 
             <div className="flex w-full my-[32px] items-center">
               <hr className="flex-grow h-[1px] bg-white/[22%]" />
-              <p className="px-4 text-white/[22%]">or</p>
+
               <hr className="flex-grow h-[1px] bg-white/[22%]" />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-[32px]">

@@ -34,10 +34,7 @@ const PropertiesBlock = (props: {
   };
 
   return (
-    <div
-      // href={`/properties/${props.id}`}
-      className="w-full px-[24px] py-[24px] font-manrope"
-    >
+    <div className="w-full px-[24px] py-[24px] font-manrope">
       <div className="relative group">
         {/* Image container */}
         <div className="relative w-full aspect-video">
@@ -120,38 +117,51 @@ const PropertiesBlock = (props: {
       </div>
 
       {/* Property details */}
-      <p className=" font-manrope mb-[16px] font-[700] text-[16px]  mt-6  text-white">
+      <p className="font-manrope mb-[16px] font-[700] text-[16px] mt-6 text-white">
         {props.title}
       </p>
-      <div className="text-[10.5px] items-center justify-between flex w-full gap-[8px]">
-        <p className="text-white/[50%] text-nowrap">{props.address}</p>
-        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
 
-        <div className="flex justify-between items-center gap-[4px]">
-          <Image src={safe} alt="safe" />
-          <p className="text-white/[50%] text-nowrap">{props.returns} %</p>
+      {/* Modified details section to allow wrapping */}
+      <div className="text-[10.5px] flex flex-wrap w-full">
+        <div className="flex items-center mr-[8px] mb-[4px]">
+          <p className="text-white/[50%]">{props.address}</p>
         </div>
-        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
-        <div className="flex items-center gap-[4px]">
-          <Image src={bed} alt="bed" />
-          <p className="text-white/[50%] text-nowrap">{props.bed} Bed</p>
+
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full mx-[4px] self-center mb-[4px] hidden sm:block"></div>
+
+        <div className="flex items-center mr-[8px] mb-[4px]">
+          <Image src={safe} alt="safe" className="mr-[4px]" />
+          <p className="text-white/[50%]">{props.returns} %</p>
         </div>
-        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
-        <div className="flex items-center gap-[4px]">
-          <Image src={bath} alt="bath" />
-          <p className="text-white/[50%] text-nowrap">{props.bath} Bath</p>
+
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full mx-[4px] self-center mb-[4px] hidden sm:block"></div>
+
+        <div className="flex items-center mr-[8px] mb-[4px]">
+          <Image src={bed} alt="bed" className="mr-[4px]" />
+          <p className="text-white/[50%]">{props.bed} Bed</p>
         </div>
-        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full"></div>
-        <div className="flex items-center gap-[4px]">
-          <Image src={dimensions} alt="dimension" />
-          <p className="text-white/[50%] text-nowrap">{props.dimensions}</p>
+
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full mx-[4px] self-center mb-[4px] hidden sm:block"></div>
+
+        <div className="flex items-center mr-[8px] mb-[4px]">
+          <Image src={bath} alt="bath" className="mr-[4px]" />
+          <p className="text-white/[50%]">{props.bath} Bath</p>
+        </div>
+
+        <div className="w-[4.22px] h-[4.22px] bg-[#4F5353] rounded-full mx-[4px] self-center mb-[4px] hidden sm:block"></div>
+
+        <div className="flex items-center mb-[4px]">
+          <Image src={dimensions} alt="dimension" className="mr-[4px]" />
+          <p className="text-white/[50%]">{props.dimensions}</p>
         </div>
       </div>
-      <div className="w-full flex flex-row items-end  justify-between">
-        <p className="text-white mt-[30px] text-nowrap flex font-[600] gap-[10px] text-[14px]">
-          <Image src={money} alt="money" /> {props.value}{" "}
-          <span className="text-white/30">(${props.price})</span>
-        </p>
+
+      <div className="w-full flex mt-[30px] items-center justify-between flex-wrap">
+        <div className="text-white flex items-center font-[600] gap-[10px] text-[14px] mb-[10px] sm:mb-0">
+          <Image src={money} alt="money" />
+          <p>{props.value}</p>
+          <p className="text-white/30">(${props.price})</p>
+        </div>
         <div
           onClick={() => {
             if (props.active) {
@@ -160,7 +170,7 @@ const PropertiesBlock = (props: {
               alert("Property not available yet");
             }
           }}
-          className={`rounded-[12px] gap-[5px] w-fit py-[10px] font-bold px-[16px]  text-[8px] flex items-center justify-center ${
+          className={`rounded-[12px] gap-[5px] w-fit py-[10px] font-bold px-[16px] md:py-[5px] md:px-[8px] md:text-[8px] text-[12px] flex items-center justify-center ${
             props.active
               ? "text-black  bg-[#D4FAFE]"
               : "bg-[#1E2020] text-white/[52%]"

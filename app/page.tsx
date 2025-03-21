@@ -43,7 +43,7 @@ export default function Home() {
             <input
               onChange={(e) => setEmail(e.target.value)}
               type="text"
-              className="bg-transparent absolute outline-none left-[10px] w-full placeholder:font-aeonik placeholder:text-[10px] placeholder:text-white/[60%]"
+              className="bg-transparent text-[10px] md:text-[14px]  absolute outline-none left-[10px] w-full placeholder:font-aeonik placeholder:text-[10px] placeholder:md:text-[14px] placeholder:text-white/[60%]"
               placeholder="Enter your email address"
             />
 

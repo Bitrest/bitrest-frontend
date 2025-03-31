@@ -134,7 +134,7 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full bg-[#063D37] min-h-screen text-white relative flex flex-col justify-center items-center justify-items-center overflow-hidden font-carbonic">
+    <div className="w-full bg-black/[60%]  min-h-screen text-white relative flex flex-col justify-center items-center justify-items-center overflow-hidden font-carbonic">
       {showResend && <Loader />}
 
       <Link href={"/"}>
@@ -142,7 +142,7 @@ export default function Page() {
       </Link>
       <div className="h-full px-[40px] w-full items-start py-[80px] grid grid-cols-1 gap-[50px]">
         <div className="col-span-1 flex justify-center">
-          <div className="h-fit bg-[#10352F] w-[497px] rounded-[12px] border-[2px] py-8 px-8 z-10 border-white/[11%]">
+          <div className="h-fit bg-[#0D0E0E] w-[497px] rounded-[12px] border-[2px] py-8 px-8 z-10 border-white/[11%]">
             <p className="text-[30px] text-left font-[500]">
               Verify Your Identity
             </p>
@@ -177,7 +177,7 @@ export default function Page() {
                     Didn&apos;t receive the code?{" "}
                     <span
                       onClick={handleResend}
-                      className="text-[#5BC6A3] cursor-pointer"
+                      className="text-[#FF9E81] cursor-pointer"
                     >
                       Resend Code
                     </span>

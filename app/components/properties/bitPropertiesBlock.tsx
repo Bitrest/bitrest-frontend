@@ -117,12 +117,12 @@ const PropertiesBlock = (props: {
       </div>
 
       {/* Property details */}
-      <p className="font-manrope mb-[16px] font-[700] text-[16px] mt-6 text-white">
+      <p className="font-aeonik mb-[16px] font-[700] text-[16px] mt-6 text-white">
         {props.title}
       </p>
 
       {/* Modified details section to allow wrapping */}
-      <div className="text-[10.5px] flex flex-wrap w-full">
+      <div className="text-[10.5px] font-aeonik flex flex-wrap w-full">
         <div className="flex items-center mr-[8px] mb-[4px]">
           <p className="text-white/[50%]">{props.address}</p>
         </div>
@@ -156,7 +156,7 @@ const PropertiesBlock = (props: {
         </div>
       </div>
 
-      <div className="w-full flex mt-[30px] items-center justify-between flex-wrap">
+      <div className="w-full flex mt-[30px] font-aeonik items-center justify-between flex-wrap">
         <div className="text-white flex items-center font-[600] gap-[10px] text-[14px] mb-[10px] sm:mb-0">
           <Image src={money} alt="money" />
           <p>{props.value}</p>
@@ -165,7 +165,7 @@ const PropertiesBlock = (props: {
         <div
           onClick={() => {
             if (props.active) {
-              router.replace("/signup");
+              router.push("/signup");
             } else {
               alert("Property not available yet");
             }

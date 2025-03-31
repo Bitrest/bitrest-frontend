@@ -14,7 +14,7 @@ import PropertiesBlock from "./components/properties/bitPropertiesBlock";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 export default function Home() {
-  const [email, setEmail] = useState<string>();
+  const [email, setEmail] = useState<string>("");
 
   const router = useRouter();
   return (
@@ -35,7 +35,7 @@ export default function Home() {
             Leverage your bitcoin for <br /> real estate & residency <br />{" "}
             investments
           </p>
-          <p className="text-[12px] font-aeonik md:text-[20px] text-white/[55%] z-10 max-w-3xl">
+          <p className="text-[14px] font-aeonik md:text-[20px] text-white/[55%] z-10 max-w-3xl">
             Unlock property ownership & citizenship opportunities in the UK &
             Dubai without selling your BTC
           </p>
@@ -43,13 +43,13 @@ export default function Home() {
             <input
               onChange={(e) => setEmail(e.target.value)}
               type="text"
-              className="bg-transparent text-[10px] md:text-[14px]  absolute outline-none left-[10px] w-full placeholder:font-aeonik placeholder:text-[10px] placeholder:md:text-[14px] placeholder:text-white/[60%]"
+              className="bg-transparent text-[12px] md:text-[14px]  absolute outline-none left-[10px] w-full placeholder:font-aeonik placeholder:text-[12px] placeholder:md:text-[14px] placeholder:text-white/[60%]"
               placeholder="Enter your email address"
             />
 
             <button
-              onClick={() => router.replace(`/signup?email=${email}`)}
-              className="rounded-[8px] absolute right-[10px] text-[8px] md:text-[17px] cursor-pointer text-black bg-[#D4FAFE] px-4 py-2 hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all"
+              onClick={() => router.push(`/signup?email=${email}`)}
+              className="rounded-[8px] absolute right-[10px] text-[14px] md:text-[17px] cursor-pointer text-black bg-[#D4FAFE] px-4 py-2 hover:bg-[#5BC6A3] hover:text-[#02291B] transition-all"
             >
               Join Us
             </button>
@@ -59,11 +59,11 @@ export default function Home() {
 
       {/* Your BTC Section */}
       <div className="w-full px-[40px] bg-black lg:px-[120px] flex py-[108px]   items-center flex-col">
-        <p className="text-center text-[30px] lg:text-[45px]">
+        <p className="text-center text-[30px] text-wrap lg:text-[45px]">
           Your BTC, your future – fund property &<br /> residency investments
           with ease
         </p>
-        <p className="text-center w-[90%] font-aeonik mb-[113px] text-white/[55%] sm:w-[50%] flex justify-center items-center text-[10px] md:text-[16px]">
+        <p className="text-center w-[90%] font-aeonik mb-[113px] text-white/[55%] sm:w-[50%] flex justify-center items-center text-[14px] md:text-[16px]">
           At Bitrest, we assist high-net-worth individuals and investors in
           utilizing their Bitcoin for real estate and residency or citizenship
           programs in the UK and Dubai—without selling their BTC.
@@ -92,10 +92,10 @@ export default function Home() {
       {/* How BitRest Works Section */}
 
       <div className="w-full flex  relative border-dashed px-[40px] py-[100px]  items-start flex-col">
-        <p className="text-left text-[30px] lg:text-[45px] mb-[24px]">
+        <p className="text-left text-[30px] lg:text-[45px] mb-[20px]">
           How BitRest Works
         </p>
-        <p className="flex justify-start items-start text-[10px] lg:text-[16px] mb-[32px]  w-full sm:w-[80%]">
+        <p className="flex justify-start items-start text-[14px] text-white/[55%]  lg:text-[16px] mb-[32px]  w-full sm:w-[80%]">
           Buy and sell real estate with Bitcoin—secure, fast, and hassle-free.
         </p>
 
@@ -195,13 +195,13 @@ export default function Home() {
         <p className="text-left text-[30px] lg:text-[45px] mb-[24px]">
           Why Bitrest?
         </p>
-        <p className="flex justify-start items-start text-[10px] lg:text-[16px] mb-[32px]  w-full sm:w-[80%]">
+        <p className="flex justify-start items-start text-[14px] text-white/[55%] lg:text-[16px] mb-[32px]  w-full sm:w-[80%]">
           Tailored BTC-Backed Financing for High-Value Assets{" "}
         </p>
         <div className="w-full  grid grid-cols-1 sm:grid-cols-2 items-end gap-[40px]">
           <div className="bg-[#0D0E0E] items-start flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px]  md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
+              className="h-[40px] w-[40px] md:h-[65px] md:w-[65px]"
               src={globe}
               alt="globe"
             />
@@ -218,7 +218,7 @@ export default function Home() {
 
           <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
+              className="h-[40px] w-[40px] md:h-[65px] md:w-[65px]"
               src={handshake}
               alt="handshake"
             />
@@ -234,7 +234,7 @@ export default function Home() {
 
           <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
+              className="h-[40px] w-[40px] md:h-[65px] md:w-[65px]"
               src={liquidate}
               alt="liquidate"
             />
@@ -250,7 +250,7 @@ export default function Home() {
 
           <div className="bg-[#0D0E0E] flex flex-col justify-between px-[50px] py-[55px] rounded-[70px] h-[300px] md:h-[370px]">
             <Image
-              className="h-[20px] w-[20px] md:h-[65px] md:w-[65px]"
+              className="h-[40px] w-[40px] md:h-[65px] md:w-[65px]"
               src={security}
               alt="security"
             />
@@ -282,7 +282,7 @@ export default function Home() {
                 Explore investment-backed <br /> residency & real estate
                 programs
               </p>
-              <button className="font-aeonik rounded-[8px] text-[8px] md:text-[14px] lg:text-[17px] cursor-pointer text-black bg-white px-4 py-2 hover:bg-gray-100 transition-all w-fit">
+              <button className="font-aeonik rounded-[8px] text-[12px] md:text-[14px] lg:text-[17px] cursor-pointer text-black bg-white px-4 py-2 hover:bg-gray-100 transition-all w-fit">
                 Request a consultation
               </button>
             </div>

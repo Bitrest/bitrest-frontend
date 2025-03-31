@@ -10,8 +10,8 @@ export default function Page() {
       <Image
         src="/images/coming soon.png"
         alt="Coming Soon Background"
-        width={1920}
-        height={1080}
+        width={1512}
+        height={887}
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 

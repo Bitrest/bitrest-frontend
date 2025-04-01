@@ -16,26 +16,26 @@ export default function Header() {
 
         <div className="font-outfit z-40 text-white text-[16px] hidden bg-[#151717]  sm:flex items-center py-[19px] px-[25px] rounded-[20px] space-x-[43px]">
           <Link
-            href="/about"
+            href="/"
             className="cursor-pointer hover:text-[#5BC6A3] transition-colors"
           >
             Home
           </Link>
 
           <Link
-            href="/product"
+            href="/"
             className="cursor-pointer hover:text-[#5BC6A3] transition-colors"
           >
             Products
           </Link>
           <Link
-            href="/about"
+            href="/"
             className="cursor-pointer hover:text-[#5BC6A3] transition-colors"
           >
             Features
           </Link>
           <Link
-            href="/contact"
+            href="/"
             className="cursor-pointer hover:text-[#5BC6A3] transition-colors"
           >
             Contact
@@ -88,28 +88,28 @@ export default function Header() {
       >
         <div className="flex flex-col px-8 space-y-5 pt-[30%] text-[20px]">
           <Link
-            href="/about"
+            href="/"
             className="hover:text-[#5BC6A3] transition-colors"
             onClick={() => setShowMenu(false)}
           >
             Home
           </Link>
           <Link
-            href="/product"
+            href="/"
             className="hover:text-[#5BC6A3] transition-colors"
             onClick={() => setShowMenu(false)}
           >
             Product
           </Link>
           <Link
-            href="/product"
+            href="/"
             className="hover:text-[#5BC6A3] transition-colors"
             onClick={() => setShowMenu(false)}
           >
             Features
           </Link>
           <Link
-            href="/contact"
+            href="/"
             className="hover:text-[#5BC6A3] transition-colors"
             onClick={() => setShowMenu(false)}
           >

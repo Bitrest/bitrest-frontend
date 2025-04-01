@@ -303,7 +303,7 @@ export default function Home() {
                 <Image src={linkedIn} alt="linkedIn" />
               </div>
               <div className="h-[58px] rounded-[18px] flex items-center w-fit p-[14px] bg-[#171A1A]">
-                <p className="text-[16px] text-white">👋 hello@bitrest.com</p>
+                <p className="text-[16px] text-white">👋 osahon@bitrest.xyz</p>
               </div>
             </div>
           </div>

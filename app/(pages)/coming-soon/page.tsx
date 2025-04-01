@@ -44,8 +44,8 @@ export default function Page() {
       </p>
       <p className="text-white/[55%] w-[80%] text-center text-[18px] md:text-[40px] z-10 relative">
         Thank you for signing up! We&apos;re hard at work building the
-        world&apos;s first end-to-end BTC colorization platform. You&apos;ll be
-        the first to know when we go live.
+        world&apos;s first end-to-end BTC Collateralization platform.
+        You&apos;ll be the first to know when we go live.
       </p>
     </div>
   );

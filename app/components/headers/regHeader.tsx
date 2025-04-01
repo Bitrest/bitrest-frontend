@@ -111,13 +111,13 @@ export default function RegHeader() {
           <div className="font-outfit flex items-center space-x-4">
             <Link
               className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
-              href={"/signin"}
+              href={"/coming-soon"}
             >
               <Image className="z-40" src={notif} alt="Notification" />
             </Link>
             <Link
               className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
-              href={"/signin"}
+              href={"/coming-soon"}
             >
               <Image className="z-40" src={moon} alt="Night Mode" />
             </Link>

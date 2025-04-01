@@ -3,6 +3,7 @@ import instagram from "@/public/icons/Instagram.svg";
 import twitter from "@/public/icons/Twitter.svg";
 import Image from "next/image";
 import email from "@/public/icons/email small.svg";
+import Link from "next/link";
 export default function PropFooter() {
   return (
     <div className="w-full mt-[150px] px-[40px] py-[20px]">
@@ -13,9 +14,9 @@ export default function PropFooter() {
               INVESTING
             </p>
             <div className="space-y-[16px]">
-              <p>Listings</p>
-              <p>Portfolio</p>
-              <p>Investment Advisors</p>
+              <Link href={"/coming-soon"}>Listings</Link>
+              <Link href={"/coming-soon"}>Portfolio</Link>
+              <Link href={"/coming-soon"}>Investment Advisors</Link>
             </div>
           </div>
           <div className="text-[14px] text-white/80">
@@ -23,9 +24,9 @@ export default function PropFooter() {
               COMPANY
             </p>
             <div className="space-y-[16px]">
-              <p>Our Team</p>
-              <p>Careers</p>
-              <p>About Us</p>
+              <Link href={"/coming-soon"}>Our Team</Link>
+              <Link href={"/coming-soon"}>Careers</Link>
+              <Link href={"/coming-soon"}>About Us</Link>
             </div>
           </div>
           <div className="text-[14px] text-white/80">
@@ -33,14 +34,14 @@ export default function PropFooter() {
               LEARN MORE
             </p>
             <div className="space-y-[16px]">
-              <p>Blogs</p>
-              <p>Market Insights</p>
-              <p>Press Releases</p>
+              <Link href={"/coming-soon"}>Blogs</Link>
+              <Link href={"/coming-soon"}>Market Insights</Link>
+              <Link href={"/coming-soon"}>Press Releases</Link>
             </div>
           </div>
         </div>
         <div className="w-[360px] text-white/60 text-[12px]">
-          <p>INVESTING PORTAL</p>
+          <Link href={"/coming-soon"}>INVESTING PORTAL</Link>
           <p className="mt-[12px] mb-[40px]">
             Get occasional updates on news, insights and opportunities
           </p>

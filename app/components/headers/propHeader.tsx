@@ -27,9 +27,9 @@ export default function PropHeader() {
           />
         </div>
         <div className="font-outfit text-white hidden text-[14px] lg:flex items-center space-x-3">
-          <p>Invest</p>
-          <p>Portfolio</p>
-          <p>Profile</p>
+          <Link href={"/coming-soon"}>Invest</Link>
+          <Link href={"/coming-soon"}>Portfolio</Link>
+          <Link href={"/coming-soon"}>Profile</Link>
         </div>
         <div className="h-[40px] hidden lg:block bg-white/[30%] w-[1px]"></div>
 
@@ -57,20 +57,20 @@ export default function PropHeader() {
         <div className="font-outfit hidden lg:flex items-center space-x-4">
           <Link
             className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
-            href={"/signin"}
+            href={"/coming-soon"}
           >
             <Image className="z-40" src={notif} alt="Notification" />
           </Link>
           <Link
             className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
-            href={"/signin"}
+            href={"/coming-soon"}
           >
             <Image className="z-40" src={moon} alt="Night Mode" />
           </Link>
         </div>
-        <button className="bg-[#D4FAFE] hidden lg:block w-fit px-4 border text-[#063D37] py-2">
+        {/* <button className="bg-[#D4FAFE] hidden lg:block w-fit px-4 border text-[#063D37] py-2">
           Connect Wallet
-        </button>
+        </button> */}
       </div>
       {showMenu && (
         <div className="absolute top-0 left-0 flex  px-[36px] items-start justify-start text-white text-[20px] bg-[#101313] flex-col space-y-5 z-50 w-full h-screen">
@@ -105,9 +105,9 @@ export default function PropHeader() {
             />
           </div>
 
-          <p>Invest</p>
-          <p>Portfolio</p>
-          <p>Profile</p>
+          <Link href={"/coming-soon"}>Invest</Link>
+          <Link href={"/coming-soon"}>Portfolio</Link>
+          <Link href={"/coming-soon"}>Profile</Link>
           <div className="font-outfit flex items-center space-x-4">
             <Link
               className="h-[40px] bg-white/[8%] items-center justify-center flex flex-col w-[40px]"
@@ -122,9 +122,9 @@ export default function PropHeader() {
               <Image className="z-40" src={moon} alt="Night Mode" />
             </Link>
           </div>
-          <button className="bg-[#D4FAFE] w-fit px-4 border text-[#063D37] py-2">
+          {/* <button className="bg-[#D4FAFE] w-fit px-4 border text-[#063D37] py-2">
             Connect Wallet
-          </button>
+          </button> */}
         </div>
       )}
     </div>

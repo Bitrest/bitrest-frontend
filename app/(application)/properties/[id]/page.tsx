@@ -12,6 +12,7 @@ import btc from "@/public/icons/bit mini.svg";
 import coin from "@/public/icons/money-coin.svg";
 import chart from "@/public/icons/chart.svg";
 import calender from "@/public/icons/calendar.svg";
+import landsize from "@/public/icons/land size.svg";
 import duration from "@/public/icons/duration.svg";
 import commercial from "@/public/icons/commercial.svg";
 import { useSingleListing } from "@/app/_hooks/listing/useSingleListing";
@@ -27,7 +28,7 @@ export default function Page() {
   const { listing, error, singleListingLoading, mutateSingleListing } =
     useSingleListing({ id: params.id });
 
-  const [activeTab, setActiveTab] = useState("essential");
+  const [activeTab, setActiveTab] = useState("details");
 
   const placeholderImage =
     "https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-autumn-camping.png";
@@ -39,8 +40,8 @@ export default function Page() {
 
   // Tabs data
   const tabs = [
-    { id: "essential", label: "Essential" },
-    { id: "investment", label: "Investment Risks" },
+    { id: "details", label: "Property Details" },
+    // { id: "investment", label: "Investment Risks" },
     { id: "financial", label: "Financial Structure" },
     { id: "documents", label: "Documents" },
   ];
@@ -212,11 +213,11 @@ export default function Page() {
                 </div>
               </div>
             )}
-            {activeTab === "essential" && (
+            {activeTab === "details" && (
               <div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 text-white gap-y-[50px] py-[50px]">
                   {/* Minimum Investment */}
-                  <div className="flex gap-[5px]">
+                  {/* <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30]text-white w-[43px] rounded-full flex items-center justify-center">
                       <Image src={coin} alt="icon" />
                     </div>
@@ -234,9 +235,35 @@ export default function Page() {
                         </div>
                       </div>
                     </div>
+                  </div> */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={coin} alt="icon" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Bedrooms / Bathrooms
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>3 Beds / 3 Baths</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={landsize} alt="Land Size" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Parking Space
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>3 Reserved Spaces</p>
+                      </div>
+                    </div>
                   </div>
                   {/* Expected ROI */}
-                  <div className="flex gap-[5px]">
+                  {/* <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={chart} alt="chart" />
                     </div>
@@ -248,9 +275,35 @@ export default function Page() {
                         <p>{listing?.roi}%</p>
                       </div>
                     </div>
+                  </div> */}
+                  {/* Land Size */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={landsize} alt="Land Size" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">Size</p>
+                      <div className="text-[16px] font-[600]">
+                        <p>20 sqm.</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Furnishing Status */}
+                  <div className="flex gap-[5px]">
+                    <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
+                      <Image src={chart} alt="chart" />
+                    </div>
+                    <div className="font-manrope font-[500]">
+                      <p className="text-[14px] text-white/[60%]">
+                        Furnishing Status
+                      </p>
+                      <div className="text-[16px] font-[600]">
+                        <p>Fully Furnished</p>
+                      </div>
+                    </div>
                   </div>
                   {/* Return Potential */}
-                  <div className="flex gap-[5px]">
+                  {/* <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={chart} alt="chart" />
                     </div>
@@ -262,9 +315,9 @@ export default function Page() {
                         <p>{listing?.returnPotential}x</p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   {/* Investmentb Duration */}
-                  <div className="flex gap-[5px]">
+                  {/* <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={duration} alt="duration" />
                     </div>
@@ -276,8 +329,8 @@ export default function Page() {
                         <p>{listing?.duration} days</p>
                       </div>
                     </div>
-                  </div>
-                  {/* Commercial */}
+                  </div> */}
+                  {/* Property Type */}
                   <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={commercial} alt="commercial" />
@@ -292,7 +345,7 @@ export default function Page() {
                     </div>
                   </div>
                   {/* Closing Date */}
-                  <div className="flex gap-[5px]">
+                  {/* <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={calender} alt="calendar" />
                     </div>
@@ -311,16 +364,14 @@ export default function Page() {
                         </p>
                       </div>
                     </div>
-                  </div>
-                  {/* Launch Date */}
+                  </div> */}
+                  {/* Year Built */}
                   <div className="flex gap-[5px]">
                     <div className="h-[43px] bg-[#2A2C30] w-[43px] rounded-full flex items-center justify-center">
                       <Image src={calender} alt="calendar" />
                     </div>
                     <div className="font-manrope font-[500]">
-                      <p className="text-[14px] text-white/[60%]">
-                        Launch Date
-                      </p>
+                      <p className="text-[14px] text-white/[60%]">Year Built</p>
                       <div className="text-[16px] font-[600]">
                         <p>
                           {listing?.launchDate
@@ -335,7 +386,9 @@ export default function Page() {
                 </div>
                 <hr className="w-full border-[1px] border-[#262930]" />
                 <div className="mt-[60px]">
-                  <p className="font-[500] text-[24px]">Description</p>
+                  <p className="font-[500] text-white text-[24px]">
+                    Description
+                  </p>
                   <p className="font-manrope text-[16px] leading-[37px] text-white/60">
                     {listing?.description}
                   </p>
@@ -463,6 +516,8 @@ export default function Page() {
               address={property.address}
               price={property.price}
               images={property.images}
+              loanTerm={"10 months"}
+              btcPrice="1.2"
             />
           ))}
         </div>

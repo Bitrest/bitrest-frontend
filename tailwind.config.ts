@@ -28,6 +28,7 @@ export default {
         roboto: ["var(--font-roboto)"],
         manrope: ["var(--font-manrope)"],
         aeonik: ["var(--font-aeonik)"],
+        bricolage: ["var(--font-bricolage)"],
       },
       backgroundImage: {
         "custom-gradient":

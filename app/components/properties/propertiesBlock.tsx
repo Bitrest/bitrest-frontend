@@ -1,15 +1,19 @@
 import Image from "next/image";
 import { useState } from "react";
-import btc from "@/public/icons/color btc.svg";
+import propIcon from "@/public/icons/prop value.svg";
+import btcCollatIcon from "@/public/icons/btc safe.svg";
+import loanTermIcon from "@/public/icons/loan term.svg";
 
 const PropertiesCell = (props: {
   title: string;
   returns: string;
+  loanTerm: string;
   units: string;
   address: string;
   price: string;
   images: string[];
   id: string;
+  btcPrice: string;
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -105,20 +109,42 @@ const PropertiesCell = (props: {
       </div>
 
       {/* Property details */}
-      <p className=" font-manrope font-[700] text-base mt-6 mb-3 text-white">
+      <p className="font-manrope font-[700] text-base mt-6 mb-3 text-white">
         {props.title}
       </p>
-      <p className="text-white/70 text-xs ">
-        {props.returns}%{" "}
-        <span className="text-white/30">~ returns in 12 months</span>
-      </p>
+      <div className="text-white font-manrope text-[12px] flex gap-[26px] items-center">
+        <p className="text-white/[50%] text-[12px]">{props.address}</p>
+        <p className="text-white/[50%]">{"\u2022"}</p>
+        <div className="flex items-center gap-[4px]">
+          <Image
+            className="w-[20px] h-[20px]  cursor-pointer"
+            src={btcCollatIcon}
+            alt={props.title}
+          />
+          <p className="text-[12px] font-[500]">{props.returns} %</p>
+        </div>
+        <div className="flex items-center gap-[4px]">
+          <Image
+            className="w-[20px] h-[20px]  cursor-pointer"
+            src={loanTermIcon}
+            alt={props.title}
+          />
+          <p className="text-[12px] font-[500]">{props.loanTerm}</p>
+        </div>
+      </div>
+
       <div className="w-full text-sm mt-4 font-[600] text-white flex justify-between">
         <div className="flex items-center gap-2">
-          <Image src={btc} alt="btc" />
-          <p>{props.price}</p>
+          <Image src={propIcon} alt="btc" />
+          <p>
+            {Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+              minimumFractionDigits: 2,
+            }).format(parseInt(props.price))}{" "}
+            <span className="text-white/[40%]">({props.btcPrice} BTC)</span>
+          </p>
         </div>
-        <p>{props.units} Units</p>
-        <p>{props.address}</p>
       </div>
     </div>
   );

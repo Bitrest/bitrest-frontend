@@ -13,7 +13,7 @@ export default function PropFooter() {
             <p className="mb-[24px] text-white/60 font-[500] text-[12px]">
               INVESTING
             </p>
-            <div className="space-y-[16px]">
+            <div className="space-y-[16px] flex flex-col">
               <Link href={"/coming-soon"}>Listings</Link>
               <Link href={"/coming-soon"}>Portfolio</Link>
               <Link href={"/coming-soon"}>Investment Advisors</Link>
@@ -23,7 +23,7 @@ export default function PropFooter() {
             <p className="mb-[24px] text-white/60 font-[500] text-[12px]">
               COMPANY
             </p>
-            <div className="space-y-[16px]">
+            <div className="space-y-[16px] flex flex-col">
               <Link href={"/coming-soon"}>Our Team</Link>
               <Link href={"/coming-soon"}>Careers</Link>
               <Link href={"/coming-soon"}>About Us</Link>
@@ -33,7 +33,7 @@ export default function PropFooter() {
             <p className="mb-[24px] text-white/60 font-[500] text-[12px]">
               LEARN MORE
             </p>
-            <div className="space-y-[16px]">
+            <div className="space-y-[16px] flex flex-col">
               <Link href={"/coming-soon"}>Blogs</Link>
               <Link href={"/coming-soon"}>Market Insights</Link>
               <Link href={"/coming-soon"}>Press Releases</Link>

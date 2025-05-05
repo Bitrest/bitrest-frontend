@@ -7,11 +7,17 @@ import btc from "@/public/icons/color btc.svg";
 import { propertiesData } from "@/app/constants";
 import dropdownIcon from "@/public/icons/dropdown.svg";
 import filterIcon from "@/public/icons/filters.svg";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { useListings } from "@/app/_hooks/listing/useListings";
 import PropertiesCell from "@/app/components/properties/propertiesBlock";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/loaders/loader";
+import Link from "next/link";
+import propIcon from "@/public/icons/prop value.svg";
+import btcCollatIcon from "@/public/icons/btc safe.svg";
+import loanTermIcon from "@/public/icons/loan term.svg";
+import router from "next/navigation";
+import banner from "@/public/images/unlock property.png";
 export default function Page() {
   const { listingLoading, mutateListings, error, listings, page } =
     useListings();
@@ -19,7 +25,7 @@ export default function Page() {
   // Show loading skeleton while fetching data
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [tab, setTab] = useState<"trust" | "prop">("prop");
+  const [tab, setTab] = useState<"crowdfunding" | "broker">("broker");
   const router = useRouter();
 
   if (listingLoading) {
@@ -28,27 +34,47 @@ export default function Page() {
 
   return (
     <div className="bg-[#101313] min-h-screen pt-[50px] pb-[100px] w-full px-[36px]">
-      <div className="py-[7px] px-[10px] bg-[#171A1A] rounded-[200px] mx-auto w-fit flex gap-4 mb-[50px] items-center text-[16px] text-[#B9B9B9CC]/[80%] font-[600] font-manrope text-white">
+      <div className="py-[7px] px-[10px] bg-[#171A1A] rounded-[20px] mx-auto w-fit flex gap-4 mb-[36px] items-center text-[16px] text-[#B9B9B9CC]/[80%] font-[600] font-manrope text-white">
         <div
-          onClick={() => setTab("prop")}
+          onClick={() => setTab("crowdfunding")}
           className={`${
-            tab === "prop" && "bg-[#D4FAFE] text-black rounded-[200px] "
+            tab === "crowdfunding" && "bg-[#D4FAFE] text-black rounded-[10px] "
           } px-[20px] py-[10px] cursor-pointer transition-transform ease-in-out duration-1000`}
         >
-          PROPERTIES
+          CROWD FUNDING
         </div>
         <div
-          onClick={() => setTab("trust")}
+          onClick={() => setTab("broker")}
           className={`${
-            tab === "trust" && "bg-[#D4FAFE] text-black rounded-[200px] "
+            tab === "broker" && "bg-[#D4FAFE] text-black rounded-[10px] "
           } px-[20px] py-[10px] cursor-pointer transition-transform ease-in-out duration-1000`}
         >
-          INVESTMENT TRUST
+          BROKER MANAGEMENT
+        </div>
+      </div>
+
+      <div className="mb-[55px] relative h-[400px] text-black md:h-[600px] rounded-[36px] overflow-hidden">
+        <Image
+          src={banner}
+          alt="banner"
+          fill
+          className="object-cover rounded-[36px]"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center px-[58px] text-black">
+          <p className="font-[600] text-[18px] font-manrope mb-2">
+            WELCOME TO BITREST
+          </p>
+          <p className="text-[30px] md:text-[55px] leading-tight">
+            Unlock{" "}
+            <span className="font-bricolage italic">property ownership</span>
+            <br />
+            with bitcoin
+          </p>
         </div>
       </div>
 
       <div className="flex justify-center w-full  mb-[40px]">
-        <div className="flex flex-col items-center justify-center sm:flex-row gap-4">
+        <div className="sm:flex grid grid-cols-2 items-center justify-center sm:flex-row gap-4">
           <div className="w-full sm:w-fit h-[44px] flex items-center rounded-[8px] bg-white/[8%]">
             <select
               defaultValue={"Luxury Condo"}
@@ -127,10 +153,8 @@ export default function Page() {
         <div className="relative group lg:w-1/2">
           <div className="relative w-full h-full min-h-[300px]">
             <Image
-              src={propertiesData[0].images[currentImageIndex]}
-              alt={`${propertiesData[0].title} - Image ${
-                currentImageIndex + 1
-              }`}
+              src={listings[1].images[currentImageIndex]}
+              alt={`${listings[1].title} - Image ${currentImageIndex + 1}`}
               className="object-cover rounded-lg"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -140,7 +164,7 @@ export default function Page() {
 
           {/* Image navigation dots */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {propertiesData[0].images.map((_, index) => (
+            {listings[1].images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
@@ -159,7 +183,7 @@ export default function Page() {
             <button
               onClick={() =>
                 setCurrentImageIndex((prev) =>
-                  prev === 0 ? propertiesData[0].images.length - 1 : prev - 1
+                  prev === 0 ? listings[1].images.length - 1 : prev - 1
                 )
               }
               className="p-2 m-2 rounded-full bg-black/50 hover:bg-black/75 transition-colors"
@@ -205,88 +229,141 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="py-[40px] px-[30px] lg:w-1/2">
-          {/* First Row */}
-          <div className="flex justify-between items-center">
-            <p className="text-[20px] text-white font-[500]">Tedro Courts</p>
-            <div className="flex items-center gap-2">
-              <Image src={map} alt="map" />
-              <p className="text-[16px] text-white/[60%]">Lagos, Nigeria</p>
-            </div>
-            <p className="py-[9px] px-[21px] text-[#063D37] bg-[#26CE92] rounded-[27px] text-[12px]">
-              FEATURED
+        <FeatureBlock
+          title={listings[0].title}
+          location={listings[0].propertyLocation}
+          description={listings[0].description}
+          id={listings[0]._id}
+          value={
+            <p>
+              $
+              {Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+              }).format(listings[0].price)}{" "}
+              <span className="text-white/[50%]">(1.2 BTC)</span>
             </p>
-          </div>
-
-          {/* Second Row */}
-          <div className="flex mt-[34px] mb-[56px] items-start justify-between">
-            <p className="text-white/[60%] text-[14px] font-manrope">
-              Experience serene living surrounded by rolling hills and
-              breathtaking vineyards. These countryside homes offer the perfect
-              escape for investors seeking charm...{" "}
-              <span className="text-[#5BC6A3]">Read More</span>
-            </p>
-          </div>
-
-          {/* Third Row */}
-          <div className="flex flex-col lg:flex-row gap-4 items-start w-full justify-between">
-            <InfoBlock
-              title="Minimum Investment"
-              info={
-                <div className="flex gap-2 text-[16px]">
-                  <Image src={btc} alt="map" />
-                  0.01847
-                </div>
-              }
-            />
-            <InfoBlock title="Expected ROI" info="23.85%" />
-            <InfoBlock title="Units" info="50" />
-            <InfoBlock title="Investment Duration" info="10 Months" />
-          </div>
-          <button
-            onClick={() => router.push("/properties/1")}
-            className="bg-[#D4FAFE] w-[198px] px-4 mt-8 border text-[#063D37] py-2"
-          >
-            Invest Now
-          </button>
-        </div>
+          }
+          collateral={listings[0].returnPotential.toString()}
+          term={`${listings[0].duration.toString()} days`}
+        />
       </div>
 
       {/* Properties */}
-      <div className="grid grid-col-1 gap-x-[36px] gap-y-[72px] mt-[55px] sm:grid-col-2 lg:grid-cols-4">
-        {listings?.map((property, index) => (
-          <PropertiesCell
-            key={index}
-            id={property._id}
-            title={property.title}
-            returns={property.returnPotential.toString()}
-            units={property.totalSupply.toString()}
-            address={property.propertyLocation.toString()}
-            price={property.price.toString()}
-            images={property?.images}
-          />
-        ))}
-      </div>
+      <div className="relative">
+        <div className="grid grid-col-1 gap-x-[36px] gap-y-[72px] mt-[55px] sm:grid-col-2 lg:grid-cols-4">
+          {listings?.map((property, index) => (
+            <PropertiesCell
+              key={index}
+              id={property._id}
+              title={property.title}
+              returns={property.returnPotential.toString()}
+              units={property.totalSupply.toString()}
+              address={property.propertyLocation.toString()}
+              price={property.price.toString()}
+              images={property?.images}
+              loanTerm={"10 months"}
+              btcPrice="1.2"
+            />
+          ))}
+        </div>
 
-      <div className="w-full flex flex-col items-center mt-[150px]">
-        <p className="text-center text-[20px] text-white">
-          Continue exploring new investments
-        </p>
-        <button className="bg-[#D4FAFE] text-[500] font-carbonic w-[198px] px-4 mt-8 border  text-[#063D37] py-2">
-          Show more
-        </button>
+        <div className="w-full absolute flex h-[200px] bg-gradient-to-b from-[#101313]/[0%] bottom-[0px] to-[#101313] flex-col items-center mt-[150px]">
+          <button className="bg-[#D4FAFE] text-[500] font-carbonic w-[198px] px-4 mt-8 border  text-[#063D37] py-2">
+            Show more
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
-const InfoBlock = ({ title, info }: { title: string; info: any }) => {
+const FeatureBlock = ({
+  title,
+  location,
+  description,
+  value,
+  collateral,
+  term,
+  id,
+}: {
+  title: string;
+  location: string;
+  description: string;
+  value: any;
+  collateral: string;
+  term: string;
+  id: string;
+}) => {
+  const router = useRouter();
   return (
-    <div className="flex flex-col w-full pr-[20px]">
-      <p className="text-white/[60%] font-[500] text-[14px] font-manrope">
+    <div className="py-[40px] px-[30px] lg:w-1/2">
+      {/* First Row */}
+      <div className="flex justify-between items-center">
+        <div className="flex gap-[16px]">
+          <p className="text-[20px] text-white font-[500]">{title}</p>
+          <div className="flex items-center gap-2">
+            <Image src={map} alt="map" />
+            <p className="text-[16px] text-white/[60%]">{location}</p>
+          </div>
+        </div>
+        <p className="py-[9px] px-[21px] text-[#063D37] bg-[#3EEEBF] rounded-[9px] text-[12px]">
+          FEATURED
+        </p>
+      </div>
+
+      <div className="flex mt-[34px] mb-[56px] items-start justify-between">
+        <p className="text-white/[60%] text-[14px] font-manrope">
+          {description}
+          {description.length > 50 && (
+            <span className="text-[#3EEEBF]">Read More</span>
+          )}
+        </p>
+      </div>
+
+      {/* Third Row */}
+      <div className="flex flex-row lg:flex-row gap-4 items-start w-full mb-[40px] justify-between">
+        <InfoBlock
+          icon={propIcon}
+          title="Property Value"
+          info={<p className="flex gap-2 text-[16px]">{value}</p>}
+        />
+        <InfoBlock
+          icon={btcCollatIcon}
+          title="BTC Collateral"
+          info={<p>{collateral}</p>}
+        />
+        <InfoBlock icon={loanTermIcon} title="Loan Term" info={<p>{term}</p>} />
+      </div>
+      <button
+        onClick={() => router.push(`properties/${id}`)}
+        className="bg-[#D4FAFE] w-[134px] h-[47px]  font-[500] text-[16px] mt-8  rounded-[6px] text-[#000000]"
+      >
+        Buy Now
+      </button>
+    </div>
+  );
+};
+
+const InfoBlock = ({
+  title,
+  info,
+  icon,
+}: {
+  title: any;
+  info: JSX.Element;
+  icon: any;
+}) => {
+  return (
+    <div className="flex flex-col min-h-[50px] gap-[20px] w-full pr-[20px]">
+      <div className="flex gap-[7px]  text-white/[60%] font-[500] text-[14px] font-manrope">
+        <Image
+          className="w-[20px] h-[20px]  cursor-pointer"
+          src={icon}
+          alt={title}
+        />
         {title}
-      </p>
+      </div>
 
       <div className="text-[16px] text-white font-[600]">{info}</div>
     </div>

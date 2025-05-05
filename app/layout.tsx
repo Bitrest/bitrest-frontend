@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import localFont from "next/font/local";
-import { Manrope, Outfit } from "next/font/google";
+import { Manrope, Outfit, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import ToastProvider from "./_utils/context/toastContext";
 import { UserContextProvider } from "./_utils/context/userContext";
@@ -136,6 +136,13 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const bricolage = Bricolage_Grotesque({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  style: ["normal"],
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+});
+
 const manrope = Manrope({
   weight: ["400", "500", "600", "700"],
   style: ["normal"],
@@ -156,7 +163,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${carbonic.variable} ${manrope.variable} ${outfit.variable} ${aeonik.variable} bg-black font-carbonic antialiased min-h-screen overflow-x-hidden`}
+        className={`${carbonic.variable} ${bricolage.variable} ${manrope.variable} ${outfit.variable} ${aeonik.variable} bg-black font-carbonic antialiased min-h-screen overflow-x-hidden`}
       >
         <UserContextProvider>
           <ToastProvider>{children}</ToastProvider>
